@@ -7,7 +7,7 @@ class Chart extends Component {
     return (
       <div className="Chart">
         <div className="Chart-header">
-          <iframe width="100%" height="500" frameborder="0" scrolling="no"
+          <iframe width="100%" height="500" frameBorder="0" scrolling="no"
             src="https://s3-us-west-2.amazonaws.com/perceival-html-plots/default/sample-scatter.html"></iframe>
         </div>
         <p className="Chart-intro">
