@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Chart from './Chart'
+import Pi from './Pi'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Perceival</h2>
+    <div className="row">
+        <div className="col-md-6">
+            <div className="card">
+                <div className="content">
+                    <Chart />
+                </div>
+            </div>
         </div>
-        <p className="App-intro">
-          ...
-        </p>
-      </div>
+        <div className="col-md-6">
+            <div className="card">
+                <div className="content">
+                    <Pi />
+                </div>
+            </div>
+        </div>
+    </div>
     );
   }
 }
