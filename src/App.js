@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { Col } from 'react-bootstrap';
 import './App.css';
+import Chart from './Chart'
+import Pi from './Pi'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Perceival</h2>
-        </div>
-        <p className="App-intro">
-          ...
-        </p>
-      </div>
+      <div>
+        <Col md={6} mdPull={6} />
+        <Col md={6} mdPush={6} />
+      <Chart />
+      <Pi />
+      </div>  
     );
   }
 }
