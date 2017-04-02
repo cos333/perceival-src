@@ -6,18 +6,36 @@ import Pi from './Pi'
 class App extends Component {
   render() {
     return (
-    <div className="row">
-        <div className="col-md-6">
-            <div className="card">
-                <div className="content">
-                    <Chart />
+    <div>
+        <div id="row1" className="row">
+            <div className="col-md-6">
+                <div className="card">
+                    <div className="content">
+                        <Chart />
+                    </div>
+                </div>
+            </div>
+            <div className="col-md-6">
+                <div className="card">
+                    <div className="content">
+                        <Pi />
+                    </div>
                 </div>
             </div>
         </div>
-        <div className="col-md-6">
-            <div className="card">
-                <div className="content">
-                    <Pi />
+        <div id="row2" className="row">
+            <div className="col-md-6">
+                <div className="card">
+                    <div className="content">
+                        <Chart />
+                    </div>
+                </div>
+            </div>
+            <div className="col-md-6">
+                <div className="card">
+                    <div className="content">
+                        <Chart />
+                    </div>
                 </div>
             </div>
         </div>

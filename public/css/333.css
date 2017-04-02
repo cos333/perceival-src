@@ -52,3 +52,13 @@ a:hover, a:visited, a:active {
   background: linear-gradient(to bottom, #7d1fd0 0%, rgba(125, 31, 208, 0.4) 40%);
   background-size: 140% 140%;
 }
+
+@media (max-width: 992px) {
+  .top-bar {
+    background-color: #7d1fd0;
+  }
+
+  .navbar-toggle {
+    color: white;
+  }
+}
