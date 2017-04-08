@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Chart from './Chart'
 import Pi from './Pi'
@@ -40,10 +39,7 @@ class App extends Component {
                     </div>
                 </div>
             </div>
-            </div>
-              <Chart />
-      <Pi /> 
-      <Column />    
+        </div>
     </div>
     );
   }
