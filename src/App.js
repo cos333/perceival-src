@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Chart from './Chart'
 import Pi from './Pi'
-import Column from './Column'
 
 class App extends Component {
   render() {
@@ -19,7 +18,7 @@ class App extends Component {
             <div className="col-md-6">
                 <div className="card">
                     <div className="content">
-                        <Pi />
+                            <Pi />
                     </div>
                 </div>
             </div>
