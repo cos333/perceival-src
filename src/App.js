@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Chart from './Chart'
 import Pi from './Pi'
+import Force from './Force'
 
 class App extends Component {
   render() {

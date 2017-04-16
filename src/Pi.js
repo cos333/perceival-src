@@ -27,9 +27,9 @@ class Pi extends Component {
   render() {
     return (
       <div className='Pi'>
-            <button type = 'button' className = 'btn btn-info' onClick = {
+            <button type='button' className='btn btn-info' onClick={
         this.getData}>Get Pi</button>
-      <p>The value of pi is: {JSON.stringify(this.state.data)}</p>
+      {/*<p>The value of pi is: {JSON.stringify(this.state.data)}</p>*/}
     </div>
     );
   }

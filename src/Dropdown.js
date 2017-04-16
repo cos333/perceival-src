@@ -1,8 +1,7 @@
-import './Chart.css';
-
 import React, {Component} from 'react';
+import './Dropdown.css';
 
-class Chart extends Component {
+class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {response: 'CentsSpent', segment: 'Gender'};
@@ -55,7 +54,6 @@ class Chart extends Component {
 
   render() {
     return (
-      <div className='Chart'>
         <div>
         <div className='dropdown' id='response'>
           <button className='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>Response
@@ -78,16 +76,6 @@ class Chart extends Component {
             <li><a onClick={this.updateResponse}>Language</a></li>              
           </ul> 
           </div>
-        </div>  
-        {/*<i className='fa fa-bar-chart' aria-hidden='true'></i>
-        <i className="fa fa-pie-chart" aria-hidden="true"></i>
-        <i className='fa fa-line-chart' aria-hidden='true'></i>*/}
-        <div className='Chart-header'>
-          <iframe width='100%' height='500' frameBorder='0' scrolling='no'
-            src='https://s3-us-west-2.amazonaws.com/perceival-html-plots/default/barplot-CentsSpent-vs-gender.html'></iframe>
-        </div>
-        <p className='Chart-intro'>
-        </p>
       </div>
     );
 }
