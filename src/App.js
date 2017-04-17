@@ -28,14 +28,12 @@ class App extends Component {
             <div className="col-md-6">
                 <div className="card">
                     <div className="content">
-                        <Chart />
                     </div>
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="card">
                     <div className="content">
-                        <Chart />
                     </div>
                 </div>
             </div>
