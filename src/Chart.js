@@ -26,17 +26,16 @@ class Chart extends Component {
     this.updateSegment = this.updateSegment.bind(this);
   }
 
-  componentDidMount() {
-    fetch(
-        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot')
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-          this.setState({url: data.url});
-        });
-  };
+  // componentDidMount() {
+  //   fetch(
+  //       'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot')
+  //       .then((res) => {
+  //         return res.json();
+  //       })
+  //       .then((data) => {
+  //         this.setState({url: data.url});
+  //       });
+  // };
 
   handleClick(key) {
     console.log(key);
@@ -45,19 +44,20 @@ class Chart extends Component {
   updateResponse(response) {
     console.log('updateResponse Called');
 
-    const header = {
+    const headers = new Headers({
       method: 'GET',
-      headers: {'response': response, 'segment': this.state.segment}
-    };
+      headers: {'response': 'NumClicks', 'segment': this.state.segment}
+    });
 
     fetch(
-        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot',
-        header)
+        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', headers)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.setState({response: response});
+          this.setState({
+            response: response,
+          url: data.url});
         });
   }
 
@@ -86,8 +86,8 @@ class Chart extends Component {
     return (
       <div className='Chart'>
         <div>
-          <Dropdown onClick={
-      this.handleClick} response={
+          <Dropdown onClick={(key) =>
+      this.updateResponse(key)} response={
       this.state.response} segment={
       this.state.segment} />
         </div>  

@@ -4,7 +4,7 @@ import './Dropdown.css';
 function List(props) {
 
     return (
-        <li><a onClick={props.onClick(props.data.key)}>{props.data.name}</a></li>
+        <li><a onClick={() => props.onClick(props.data)}>{props.data.name}</a></li>
     )
 }
 
@@ -19,16 +19,14 @@ class Dropdown extends Component {
 
     renderResponse(i) {
         const response = this.props.response;
-        return <List onClick={this.props.onClick} data={response[i]} />;
+        return <List onClick={() => this.props.onClick(response[i].key)} data={response[i]} />;
     }
 
     renderSegment(i) {
         const segment = this.props.segment;
-        return <List onClick={this.props.onClick} data={segment[i]} />;
+        return <List onClick={() => this.props.onClick(segment[i].key)} data={segment[i]} />;
     }
-    handleClick() {
-        console.log("Clicked");
-    }
+
     updateResponse(response) {
         console.log('updateResponse Called');
 
