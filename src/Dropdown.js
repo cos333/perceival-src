@@ -11,7 +11,7 @@ function List(props) {
 class Dropdown extends Component {
     constructor(props) {
         super(props);
-        this.state = { response: 'CentsSpent', segment: 'Gender' };
+        this.state = { response: 'centsspent', segment: 'gender' };
 
         this.updateResponse = this.updateResponse.bind(this);
         this.updateSegment = this.updateSegment.bind(this);
