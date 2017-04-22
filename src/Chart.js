@@ -41,10 +41,10 @@ class Chart extends Component {
   handleClick(key) {
     console.log('handleClick Called. Key is ' + key);
 
-    var obj = {
-      method: 'GET',
-      headers: { 'response': 'numclicks', 'segment': 'age' }
-    };
+    // var obj = {
+    //   method: 'GET',
+    //   headers: { 'response': 'numclicks', 'segment': 'age' }
+    // };
 
     var responses = ['numclicks', 'centsspent', 'secondsspent'];
     var segments = ['age', 'country', 'gender', 'language'];

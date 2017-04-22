@@ -8,7 +8,7 @@ function List(props) {
     );
 }
 
-class Dropdown extends Component {
+class Dropdown_two extends Component {
     constructor(props) {
         super(props);
         this.state = { response: 'centsspent', segment: 'gender' };
@@ -90,7 +90,6 @@ class Dropdown extends Component {
                         {this.renderSegment(0)}
                         {this.renderSegment(1)}
                         {this.renderSegment(2)}
-                        {this.renderSegment(3)}
                     </ul>
                 </div>
             </div>
@@ -98,4 +97,4 @@ class Dropdown extends Component {
     }
 }
 
-export default Dropdown;
+export default Dropdown_two;

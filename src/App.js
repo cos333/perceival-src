@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Chart from './Chart'
-import Pi from './Pi'
-import Force from './Force'
+import Chart from './Chart';
+import Timeseries from './Timeseries';
+import Pi from './Pi';
+//import Time from './Time';
+import Bar from './Bar';
 
 class App extends Component {
   render() {
@@ -19,7 +21,7 @@ class App extends Component {
             <div className="col-md-6">
                 <div className="card">
                     <div className="content">
-                            <Pi />
+                            <Timeseries />
                     </div>
                 </div>
             </div>
@@ -27,13 +29,15 @@ class App extends Component {
         <div id="row2" className="row">
             <div className="col-md-6">
                 <div className="card">
-                    <div className="content">
+                        <div className="content">
+                        <Bar />    
                     </div>
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="card">
-                    <div className="content">
+                        <div className="content">
+                        <Pi />    
                     </div>
                 </div>
             </div>
