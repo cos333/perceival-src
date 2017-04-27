@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Chart from './Chart';
 import Timeseries from './Timeseries';
-import Pi from './Pi';
-//import Time from './Time';
+import Pie from './Pie';
 import Bar from './Bar';
 
 class App extends Component {
@@ -37,7 +36,7 @@ class App extends Component {
             <div className="col-md-6">
                 <div className="card">
                         <div className="content">
-                        <Pi />    
+                            <Pie height={300} width={300}/>    
                     </div>
                 </div>
             </div>

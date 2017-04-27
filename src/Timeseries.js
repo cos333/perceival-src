@@ -1,8 +1,9 @@
 import './Timeseries.css';
+import axios from 'axios';
 
 import React, {Component} from 'react';
 
-import Dropdown_two from './Dropdown_two';
+import DropdownTwo from './DropdownTwo';
 
 class Timeseries extends Component {
   constructor(props) {
@@ -15,8 +16,7 @@ class Timeseries extends Component {
       ],
       segment: [
         {name: 'Individual', key: 'individual'},
-        {name: 'Average', key: 'average'}, 
-        {name: 'Total', key: 'total'}
+        {name: 'Average', key: 'average'}, {name: 'Total', key: 'total'}
       ],
       url: '',
       currentResponse: 'numclicks',
@@ -29,9 +29,16 @@ class Timeseries extends Component {
   }
 
   componentDidMount() {
-    fetch(
-        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot')
+    var url =
+        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData';
+    var obj = {
+      method: 'GET',
+      headers: {'plot': 'bar', 'response': 'SecondsSpent', 'segment': 'Age'}
+    };
+
+    fetch(url, obj)
         .then((res) => {
+          console.log(res);
           return res.json();
         })
         .then((data) => {
@@ -107,7 +114,7 @@ class Timeseries extends Component {
     return (
       <div className='Chart'>
         <div>
-          <Dropdown_two onClick={
+          <DropdownTwo onClick={
       (key) => this.handleClick(key)} response={
       this.state.response} segment={
       this.state.segment} />
