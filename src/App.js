@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
 import './App.css';
-import Chart from './Chart';
-import Timeseries from './Timeseries';
-import Pie from './Pie';
+
+import React, {Component} from 'react';
+
 import Bar from './Bar';
+import Chart from './Chart';
+import Pie from './Pie';
+import Piechart from './Piechart';
+import Timeseries from './Timeseries';
 
 class App extends Component {
   render() {
     return (
     <div>
-        <div id="row1" className="row">
-            <div className="col-md-6">
-                <div className="card">
-                    <div className="content">
-                        <Chart />
-                    </div>
+        <div id='row1' className='row'>
+            <div className='col-md-6'>
+                <div className='card'>
+                        <div className='content'>
+                        <Piechart />
+                        </div>
                 </div>
             </div>
             <div className="col-md-6">
@@ -25,18 +28,18 @@ class App extends Component {
                 </div>
             </div>
         </div>
-        <div id="row2" className="row">
-            <div className="col-md-6">
-                <div className="card">
-                        <div className="content">
-                        <Bar />    
+        <div id='row2' className='row'>
+            <div className='col-md-6'>
+                <div className='card'>
+                        <div className='content'>
+                        {/*<Piechart />    */}
                     </div>
                 </div>
             </div>
             <div className="col-md-6">
                 <div className="card">
                         <div className="content">
-                            <Pie height={300} width={300}/>    
+                            <Chart />    
                     </div>
                 </div>
             </div>
