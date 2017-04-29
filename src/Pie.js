@@ -163,10 +163,7 @@ class Pie extends Component {
 
 
         });
-
-
     }
-
 
     render() {
         return (

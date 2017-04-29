@@ -7,6 +7,8 @@ import Chart from './Chart';
 import Pie from './Pie';
 import Piechart from './Piechart';
 import Timeseries from './Timeseries';
+import Line from './Line';
+
 
 class App extends Component {
     render() {
@@ -23,7 +25,7 @@ class App extends Component {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
-                                <Timeseries />
+                                <Line />
                             </div>
                         </div>
                     </div>
@@ -44,6 +46,7 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
+                <Line />
             </div>
         );
     }
