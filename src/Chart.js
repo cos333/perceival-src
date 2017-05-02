@@ -28,12 +28,14 @@ class Chart extends Component {
   }
 
   componentDidMount() {
+    // console.log("Hello");
     // fetch(
-    //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot')
+    //   'https://api.github.com/users/sheonhan/repos')
     //   .then((res) => {
     //     return res.json();
     //   })
     //   .then((data) => {
+    //     console.log(data);
     //     this.setState({ url: data.url });
     //   });
   };

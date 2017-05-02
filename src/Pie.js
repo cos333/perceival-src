@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import React, { Component } from 'react';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 
 import './Pie.css';
 
@@ -40,7 +40,7 @@ class Pie extends Component {
     createArcs() {
         var w = this.props.width;
         var h = this.props.height;
-        var outerRadius = w / 2;
+        // var outerRadius = w / 2;
         return d3.select(this.refs.pie)
             .append('svg')
             .attr('width', w)
@@ -87,28 +87,28 @@ class Pie extends Component {
 
     }
 
-    setText(arcs) {
-        var svg = d3.select('svg');
-        var arc = d3.arc()
-            .innerRadius(0)
-            .outerRadius(150);
-        var dataset = this.state.dataset;
-        var pie = d3.pie().value(function (d) {
-            return d.props;
-        });
+    // setText(arcs) {
+    //     var svg = d3.select('svg');
+    //     var arc = d3.arc()
+    //         .innerRadius(0)
+    //         .outerRadius(150);
+    //     var dataset = this.state.dataset;
+    //     var pie = d3.pie().value(function (d) {
+    //         return d.props;
+    //     });
 
-        var text = svg.select('.label').selectAll("text")
-            .data(pie(dataset), function (d) {
-                return d.data.label;
-            })
-        text.enter()
-            .append('text')
-            .attr("dy", ".35em")
-            .text("")
-        // .text(function (d) {
-        //     return (d.data.label);
-        // });
-    }
+    //     var text = svg.select('.label').selectAll("text")
+    //         .data(pie(dataset), function (d) {
+    //             return d.data.label;
+    //         })
+    //     text.enter()
+    //         .append('text')
+    //         .attr("dy", ".35em")
+    //         .text("")
+    //     // .text(function (d) {
+    //     //     return (d.data.label);
+    //     // });
+    // }
 
     updatePie() {
         console.log("Clicked");
@@ -141,7 +141,7 @@ class Pie extends Component {
             var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
-            var path = arcs.selectAll("path").data(pie(dataset))
+            path = arcs.selectAll("path").data(pie(dataset))
                 .enter()
                 .append('path')
                 .attr("fill", function (d, i) {

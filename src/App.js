@@ -2,11 +2,11 @@ import './App.css';
 
 import React, { Component } from 'react';
 
-import Bar from './Bar';
+// import Bar from './Bar';
 import Chart from './Chart';
 import Pie from './Pie';
-import Piechart from './Piechart';
-import Timeseries from './Timeseries';
+// import Piechart from './Piechart';
+// import Timeseries from './Timeseries';
 import Line from './Line';
 
 
