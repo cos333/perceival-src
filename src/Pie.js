@@ -50,14 +50,15 @@ class Pie extends Component {
         .data(pie(dataset))
         .enter()
         .append('path')
+        .transition()
+        .delay(1500)
+        .duration(800)
         .attr(
             'fill',
             function(d, i) {
               return color(i)
             })
         .attr('d', arc)
-        .transition()
-        .duration(800)
         .attrTween(
             'd',
             function(d) {
@@ -135,10 +136,8 @@ class Pie extends Component {
   }
 
   render() {
-        return (
-            <div>
-                <div ref="pie"></div>
+    return (<div><div ref = 'pie'></div>
             </div>)
-    }
+  }
 }
 export default Pie;

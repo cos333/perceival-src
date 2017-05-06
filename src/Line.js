@@ -25,7 +25,7 @@ class Line extends Component {
                   .append('svg')
                   .attr('width', w)
                   .attr('height', h)
-                  .attr('class', 'linechart'),
+                  .attr('id', 'd3-line'),
         margin = {top: 20, right: 80, bottom: 30, left: 50},
         width = svg.attr('width') - margin.left - margin.right,
         height = svg.attr('height') - margin.top - margin.bottom,
@@ -91,14 +91,15 @@ class Line extends Component {
 
     path.attr('stroke-dasharray', totalLength + ' ' + totalLength)
         .attr('stroke-dashoffset', totalLength)
-        .transition()
+      .transition()
+      .delay(1500)
         .duration(1000)
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0);
   }
 
   updateLine() {
-    var lines = d3.select('.linechart');
+    var lines = d3.select('#d3-line');
     lines.remove();
     var dataset = this.props.dataset;
     var w = 500;

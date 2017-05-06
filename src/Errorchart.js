@@ -1,11 +1,11 @@
-import './Piechart.css';
+import './Chart.css';
 
 import React, { Component } from 'react';
 
-import Pie from './Pie';
 import Dropdown from './Dropdown';
+import Bars from './Bars';
 
-class Piechart extends Component {
+class Errorchart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,21 +20,7 @@ class Piechart extends Component {
       ],
       url: '',
       currentResponse: 'numclicks',
-      currentSegment: 'age',
-      dataset: [
-        {
-          labels: '18-24',
-          props: 0.298,
-        },
-        {
-          labels: '25-34',
-          props: 0.568,
-        },
-        {
-          labels: '35-44',
-          props: 0.134,
-        }
-      ]
+      currentSegment: 'age'
     };
 
     this.updateResponse = this.updateResponse.bind(this);
@@ -43,15 +29,7 @@ class Piechart extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({ url: data.url });
-      });
+
   };
 
   handleClick(key) {
@@ -73,27 +51,7 @@ class Piechart extends Component {
 
 
   updateResponse(response) {
-    var newData = [
-      {
-        labels: '18-24',
-        props: 0.800,
-      },
-      {
-        labels: '25-34',
-        props: 0.050,
-      },
-      {
-        labels: '35-44',
-        props: 0.150,
-      }
-    ];
     console.log('updateResponse called');
-    this.setState({
-      currentResponse: response,
-      dataset: newData
-    }, () => { this.refs.pie.updatePie(); });
-
-
     var obj = {
       method: 'GET',
       headers: { 'response': response, 'segment': this.state.currentSegment }
@@ -118,30 +76,25 @@ class Piechart extends Component {
 
   updateSegment(segment) {
     console.log('updateSegment called');
-    this.setState({
-      currentSegment: segment
-    }, () => { console.log(this.state); });
+    var obj = {
+      method: 'GET',
+      headers: { 'response': this.state.currentResponse, 'segment': segment }
+    };
 
-
-    // var obj = {
-    //   method: 'GET',
-    //   headers: { 'response': this.state.currentResponse, 'segment': segment }
-    // };
-
-    // fetch(
-    //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     this.setState({
-    //       currentSegment: segment,
-    //       url: data.url
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
+    fetch(
+      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          currentSegment: segment,
+          url: data.url
+        });
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }
 
   render() {
@@ -150,11 +103,11 @@ class Piechart extends Component {
         <Dropdown onClick={(key) =>
           this.handleClick(key)} response={
             this.state.response} segment={
-              this.state.segment} />
-        <Pie ref="pie" width="300px" height="300px" dataset={this.state.dataset} />
+            this.state.segment} />
+        <Bars/>
       </div>
     );
   }
 }
 
-export default Piechart;
+export default Errorchart;

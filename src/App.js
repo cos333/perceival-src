@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import Barchart from './Barchart';
 import Piechart from './Piechart';
 import Linechart from './Linechart';
-
+import Errorchart from './Errorchart';
 
 class App extends Component {
     render() {
@@ -39,7 +39,7 @@ class App extends Component {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
-                                {/*<Chart />*/}
+                                {/*<Errorchart />*/}
                             </div>
                         </div>
                     </div>
