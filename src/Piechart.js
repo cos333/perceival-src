@@ -20,7 +20,21 @@ class Piechart extends Component {
       ],
       url: '',
       currentResponse: 'numclicks',
-      currentSegment: 'age'
+      currentSegment: 'age',
+      dataset: [
+        {
+          labels: '18-24',
+          props: 0.298,
+        },
+        {
+          labels: '25-34',
+          props: 0.568,
+        },
+        {
+          labels: '35-44',
+          props: 0.134,
+        }
+      ]
     };
 
     this.updateResponse = this.updateResponse.bind(this);
@@ -42,11 +56,6 @@ class Piechart extends Component {
   handleClick(key) {
     console.log('handleClick Called. Key is ' + key);
 
-    // var obj = {
-    //   method: 'GET',
-    //   headers: { 'response': 'numclicks', 'segment': 'age' }
-    // };
-
     var responses = ['numclicks', 'centsspent', 'secondsspent'];
     var segments = ['age', 'country', 'gender', 'language'];
 
@@ -63,64 +72,85 @@ class Piechart extends Component {
 
 
   updateResponse(response) {
+    var newData = [
+      {
+        labels: '18-24',
+        props: 0.800,
+      },
+      {
+        labels: '25-34',
+        props: 0.050,
+      },
+      {
+        labels: '35-44',
+        props: 0.150,
+      }
+    ];
     console.log('updateResponse called');
-    var obj = {
-      method: 'GET',
-      headers: { 'response': response, 'segment': this.state.currentSegment }
-    };
+    this.setState({
+      currentResponse: response,
+      dataset: newData
+    }, () => { this.refs.pie.updatePie(); });
 
-    fetch(
-      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          currentResponse: response,
-          url: data.url
-        });
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+
+    // var obj = {
+    //   method: 'GET',
+    //   headers: { 'response': response, 'segment': this.state.currentSegment }
+    // };
+
+    // fetch(
+    //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState({
+    //       currentResponse: response,
+    //       url: data.url
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   }
 
   updateSegment(segment) {
     console.log('updateSegment called');
-    var obj = {
-      method: 'GET',
-      headers: { 'response': this.state.currentResponse, 'segment': segment }
-    };
+    this.setState({
+      currentSegment: segment
+    }, () => { console.log(this.state); });
 
-    fetch(
-      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        this.setState({
-          currentSegment: segment,
-          url: data.url
-        });
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+
+    // var obj = {
+    //   method: 'GET',
+    //   headers: { 'response': this.state.currentResponse, 'segment': segment }
+    // };
+
+    // fetch(
+    //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     this.setState({
+    //       currentSegment: segment,
+    //       url: data.url
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   }
 
   render() {
     return (
       <div className='Chart'>
-        <div>
-          <Dropdown onClick={(key) =>
-            this.handleClick(key)} response={
-              this.state.response} segment={
-                this.state.segment} />
-            </div>
-        <Pie width="300px" height="300px"/>    
-        <p className='Chart-intro'>
-        </p>
+        <Dropdown onClick={(key) =>
+          this.handleClick(key)} response={
+            this.state.response} segment={
+              this.state.segment} />
+        <Pie ref="pie" width="300px" height="300px" dataset={this.state.dataset} />
       </div>
     );
   }

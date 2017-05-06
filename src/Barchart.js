@@ -3,9 +3,9 @@ import './Chart.css';
 import React, { Component } from 'react';
 
 import Dropdown from './Dropdown';
-import Pie from './Pie';
+import Bar from './Bar';
 
-class Chart extends Component {
+class Barchart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -121,11 +121,11 @@ class Chart extends Component {
         <Dropdown onClick={(key) =>
           this.handleClick(key)} response={
             this.state.response} segment={
-            this.state.segment} />
-        <Pie height="300" weight="300"/>
+              this.state.segment} />
+            <Bar/>
       </div>
     );
   }
 }
 
-export default Chart;
+export default Barchart;

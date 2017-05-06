@@ -2,12 +2,9 @@ import './App.css';
 
 import React, { Component } from 'react';
 
-// import Bar from './Bar';
-import Chart from './Chart';
-import Pie from './Pie';
-// import Piechart from './Piechart';
-// import Timeseries from './Timeseries';
-import Line from './Line';
+import Barchart from './Barchart';
+import Piechart from './Piechart';
+import Linechart from './Linechart';
 
 
 class App extends Component {
@@ -18,14 +15,15 @@ class App extends Component {
                     <div className='col-md-6'>
                         <div className='card'>
                             <div className='content'>
-                                <Pie width="300px" height="300px" />
+                                <Piechart/>
+                                    {/*<Pie width="300px" height="300px" />*/}
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
-                                <Line />
+                                <Linechart />
                             </div>
                         </div>
                     </div>
@@ -34,19 +32,18 @@ class App extends Component {
                     <div className='col-md-6'>
                         <div className='card'>
                             <div className='content'>
-                                {/*<Piechart />    */}
+                                <Barchart />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
-                                <Chart />
+                                {/*<Chart />*/}
                             </div>
                         </div>
                     </div>
                 </div>
-                <Line />
             </div>
         );
     }
