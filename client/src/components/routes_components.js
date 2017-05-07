@@ -11,17 +11,18 @@ const auth = new AuthService('3aHO4uq2kfezZdBf9zVx7gkrbYduvfn8', 'sheonhan.auth0
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
     if (!auth.loggedIn()) {
-        replace({ pathname: '/perceival' })
+        console.log(auth.loggedIn);
+        replace({ pathname: '/login' })
     }
 }
 
 export const makeMainRoutes = () => {
     return (
         <Route path="/" component={Container} auth={auth}>
-            <IndexRedirect to="/home" />
-            <Route path="home" component={Home} onEnter={requireAuth} />
+            <IndexRedirect to="/login" />
+            <Route path="home" component={Perceival} onEnter={requireAuth} />
             <Route path="login" component={Login} />
-            <Route path="perceival" component={Perceival} />
+            <Route path="perceival" component={Perceival} onEnter={requireAuth} />
         </Route>
     )
 }
