@@ -1,27 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
-import App from './App';
-import Nav from './Nav';
-import Main from './Main';
+import {browserHistory} from 'react-router'
+
 import './index.css';
+import App from './App';
 
+import makeRoutes from './routes'
 
-const Root = () => {
-  return (
-    <div className="container">
-      <Router history={browserHistory}>
-        <Route path="/" component={Main}/>
-        <Route path="/perceival" component={App}/>
-        {/*<Route path="/special" component={}/>*/}
-      </Router>
-    </div>
-  )
-}
+const routes = makeRoutes()
 
-ReactDOM.render(<Root />, document.getElementById('root'));
-
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <App history={browserHistory}
+        routes={routes} />,
+document.getElementById('root'));

@@ -94,24 +94,6 @@ class Linechart extends Component {
             console.log(this.state.dataset);
             this.refs.line.updateLine();  
         });
-    // var obj = {
-    //   method: 'GET',
-    //   headers: {'response': response, 'segment': this.state.currentSegment}
-    // };
-
-    // fetch(
-    //     'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot',
-    //     obj)
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //       this.setState({currentResponse: response, url: data.url});
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.message);
-    //     });
   }
 
   updateSegment(segment) {
