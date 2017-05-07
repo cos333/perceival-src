@@ -6,11 +6,13 @@ import Barchart from './Barchart';
 import Piechart from './Piechart';
 import Linechart from './Linechart';
 import Errorchart from './Errorchart';
+import Nav from './Nav'
 
 class App extends Component {
     render() {
         return (
             <div>
+                <Nav />
                 <div id='row1' className='row'>
                     <div className='col-md-6'>
                         <div className='card'>

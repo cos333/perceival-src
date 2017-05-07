@@ -33,8 +33,7 @@ class Line extends Component {
             'transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     var x = d3.scaleTime().range([0, width]),
-        y = d3.scaleLinear().range([height, 0]),
-        z = d3.scaleOrdinal(d3.schemeCategory10);
+      y = d3.scaleLinear().range([height, 0]);
 
     var dataset = this.props.dataset;
     console.log('dataset', dataset);
@@ -116,10 +115,9 @@ class Line extends Component {
             'transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     var x = d3.scaleTime().range([0, width]),
-        y = d3.scaleLinear().range([height, 0]),
-        z = d3.scaleOrdinal(d3.schemeCategory10);
+      y = d3.scaleLinear().range([height, 0]);
 
-    var dataset = this.props.dataset;
+    dataset = this.props.dataset;
     console.log('dataset', dataset);
 
     var sales = dataset.map(function(data) {
