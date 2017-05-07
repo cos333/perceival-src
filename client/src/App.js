@@ -2,10 +2,10 @@ import './App.css';
 
 import React, { Component } from 'react';
 
-import Barchart from './Barchart';
-import Piechart from './Piechart';
-import Linechart from './Linechart';
-import Errorchart from './Errorchart';
+import Barchart from './components/Barchart';
+import Piechart from './components/Piechart';
+import Linechart from './components/Linechart';
+import Errorchart from './components/Errorchart';
 import Nav from './Nav'
 
 class App extends Component {

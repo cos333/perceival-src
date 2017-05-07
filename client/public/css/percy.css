@@ -15,15 +15,30 @@ a {
     color: #9012fe;
 }
 
-a:hover, a:visited, a:active {
+a:hover,
+a:visited,
+a:active {
     color: #6218a4;
 }
 
 .btn {
     background: #7d1fd0 !important;
     color: white !important;
-
     border-style: none !important;
+}
+.btn-primary {
+    background: #447DF7 !important;
+    color: white !important;
+}
+.btn-info {
+    background: #23CCEF !important;
+    color: white !important;
+    border-style: none !important;
+}
+
+.btn-danger {
+    background: #FB404B !important;
+    color: white !important;
 }
 
 .logo {
@@ -59,7 +74,6 @@ a:hover, a:visited, a:active {
         background-color: #7d1fd0;
         border-style: none !important;
     }
-
     .navbar-toggle {
         color: white;
     }

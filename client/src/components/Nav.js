@@ -11,11 +11,10 @@ class Nav extends Component {
                     <Link className="navbar-brand" to="/">Perceival </Link>
                 </div>
                 <ul className="nav navbar-nav navbar-right">
-                    <li>
-                        <button className="btn btn-info log">Log In</button>
-                    </li>
+                    <li><button className="btn btn-primary log">Log In</button></li>
+                    <li><button className="btn btn-danger log">Log out </button></li>
                 </ul>
-                </nav>
+            </nav>
         );
     }
 }
