@@ -3,7 +3,7 @@ import { Jumbotron } from 'react-bootstrap'
 
 import Home from './Home/Home'
 import Login from './Login/Login'
-import styles from './styles.module.css'
+// import styles from './styles.module.css'
 
 export class Container extends React.Component {
   static contextTypes = {
@@ -19,17 +19,8 @@ export class Container extends React.Component {
     }
 
     return (
-      <div className='col-md-6'>
-        <div className='card'>
-          <div className='content'>
-            <Jumbotron>
-              <h2 className={styles.mainTitle}>
-                <img src='https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg' />
-              </h2>
-              {children}
-            </Jumbotron>
-          </div>
-        </div>
+      <div>
+        {children}
       </div>
     )
   }
