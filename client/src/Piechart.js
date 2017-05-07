@@ -1,4 +1,4 @@
-import './Piechart.css';
+import './Chart.css';
 
 import React, { Component } from 'react';
 

@@ -1,13 +1,12 @@
-node_modules/
-.gitignore
-*.todo
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# misc
 .DS_Store
-build/
-build.zip
-*.zip
-.DS_Store
-build/
+.env
+npm-debug.log

@@ -16,7 +16,6 @@ class App extends Component {
                         <div className='card'>
                             <div className='content'>
                                 <Piechart/>
-                                    {/*<Pie width="300px" height="300px" />*/}
                             </div>
                         </div>
                     </div>
@@ -39,7 +38,6 @@ class App extends Component {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
-                                {/*<Errorchart />*/}
                             </div>
                         </div>
                     </div>
