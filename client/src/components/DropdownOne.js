@@ -8,7 +8,7 @@ function List(props) {
     );
 }
 
-class Dropdown extends Component {
+class DropdownOne extends Component {
     constructor(props) {
         super(props);
         this.state = { response: 'centsspent', segment: 'gender' };
@@ -50,4 +50,4 @@ class Dropdown extends Component {
     }
 }
 
-export default Dropdown;
+export default DropdownOne;

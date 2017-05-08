@@ -2,7 +2,7 @@ import './Chart.css';
 
 import React, {Component} from 'react';
 
-import DropdownSingle from './DropdownSingle';
+import DropdownOne from './DropdownOne';
 import Pie from './Pie';
 
 class Piechart extends Component {
@@ -164,7 +164,7 @@ class Piechart extends Component {
 
   render() {
     return (<div className = 'Chart'>
-            <DropdownSingle onClick =
+            <DropdownOne onClick =
              {
                (key) => this.handleClick(key)
              } segment =

@@ -3,6 +3,7 @@ import './Chart.css';
 import React, { Component } from 'react';
 
 import Dropdown from './Dropdown';
+import DropdownThree from './DropdownThree';
 import Line from './Line';
 
 class Linechart extends Component {
@@ -17,6 +18,10 @@ class Linechart extends Component {
       segment: [
         { name: 'Age', key: 'age' }, { name: 'Country', key: 'country' },
         { name: 'Gender', key: 'gender' }, { name: 'Language', key: 'language' }
+      ],
+      display: [
+        { name: 'Mean', key: 'mean' },
+        { name: 'Average', key: 'average' }
       ],
       url: '',
       currentResponse: 'numclicks',
@@ -263,14 +268,8 @@ class Linechart extends Component {
 
   render() {
     return (<div className='Chart'>
-      <Dropdown onClick={
-        (key) => this.handleClick(key)
-      } response={
-        this.state.response
-      } segment={
-        this.state.segment
-      } title='Timeseries'
-        hasSegment={true} />
+      {/*<Dropdown onClick={(key) => this.handleClick(key)} response={this.state.response} segment={this.state.segment} title='Timeseries' hasSegment={true} />*/}
+      <DropdownThree onClick={(key) => this.handleClick(key)} response={this.state.response} segment={this.state.segment} display={this.state.display} title='Timeseries' hasSegment={true} />
       <Line ref='line' width="500px" height="500px" dataset={this.state.dataset} />
     </div>);
   }
