@@ -3,7 +3,7 @@ import './Chart.css';
 import React, { Component } from 'react';
 
 import Pie from './Pie';
-import Dropdown from './Dropdown';
+import DropdownSingle from './DropdownSingle';
 
 class Piechart extends Component {
   constructor(props) {
@@ -147,10 +147,9 @@ class Piechart extends Component {
   render() {
     return (
       <div className='Chart'>
-        <Dropdown onClick={(key) =>
+        <DropdownSingle onClick={(key) =>
           this.handleClick(key)} response={
-            this.state.response} segment={
-              this.state.segment} 
+            this.state.response} 
           title='Pie Chart'/>
         <Pie ref="pie" width="300px" height="300px" dataset={this.state.dataset} />
       </div>

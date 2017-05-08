@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 
 
 class Export extends Component {
-
   // fetchCSV() {
   //   var url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
   //   var bodydata = {
