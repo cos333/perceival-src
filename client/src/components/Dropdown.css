@@ -1,8 +1,23 @@
-#response {
-    display: inline;
+.dropdown-menu {
+    margin-top: 32px !important;
 }
 
-#segment {
-    display: inline;
-    margin-left: 20px;
+.btn-options {
+    background-color: #F4E7FF !important;
+    color: black !important;
+    font-family: 'Source Sans Pro';
+    font-weight: 600 !important;
+}
+
+.options {
+    padding-bottom: 70px !important;
+}
+
+h4 {
+    font-family: 'Source Sans Pro';
+    font-weight: 600 !important;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 28px;
+    vertical-align: middle;
 }
