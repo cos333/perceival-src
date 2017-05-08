@@ -33,31 +33,11 @@ class Barchart extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount(){
-      // var obj = {
-      //   method: 'GET',
-      //   headers: { 'response': 'numclicks', 'segment': 'age' }
-      // };
-      // console.log("Hello");
-      // fetch(
-      //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData',
-      //   obj)
-      //   .then((res) => {
-      //     return res.json();
-      //   })
-      //   .then((data) => {
-      //     console.log(data);
-      //     this.setState({ url: data.url });
-      //   });
-  };
+  componentDidMount(){};
 
   handleClick(key) {
     console.log('handleClick Called. Key is ' + key);
 
-    // var obj = {
-    //   method: 'GET',
-    //   headers: { 'response': 'numclicks', 'segment': 'age' }
-    // };
 
     var responses = ['numclicks', 'centsspent', 'secondsspent'];
     var segments = ['age', 'country', 'gender', 'language'];
@@ -73,55 +53,31 @@ class Barchart extends Component {
 
 
   updateResponse(response) {
+    console.log('updateResponse called');
+
     var newData = {
       'labels': ['18-24', '25-34', '35-44'],
-      'stdevs': [3.0, 2.0, 14.0],
-      'means': [35.3315, 50.2052, 40.6531]
+      'stdevs': [0.5302811935452145, 0.8727200977257314, 1.167953163111855],
+      'means': [0.2349, 0.7046, 1.5767]
     };
 
-    console.log('updateResponse called');
     this.setState({currentResponse: response, dataset: newData}, () => {
       this.refs.bar.updateBar();
     });
-    // var obj = {
-    //   method: 'GET',
-    //   headers: {'response': response, 'segment': this.state.currentSegment}
-    // };
-
-    // fetch(
-    //     'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot',
-    //     obj)
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //       this.setState({currentResponse: response, url: data.url});
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.message);
-    //     });
   }
 
   updateSegment(segment) {
     console.log('updateSegment called');
-    var obj = {
-      method: 'GET',
-      headers: {'response': this.state.currentResponse, 'segment': segment}
+
+    var newData = {
+      'labels': ['brazil', 'canada'],
+      'stdevs': [1.0030301889098718, 0.5812610263110876],
+      'means': [0.8632, 0.2884]
     };
 
-    fetch(
-        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot',
-        obj)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          this.setState({currentSegment: segment, url: data.url});
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+    this.setState({currentSegment: segment, dataset: newData}, () => {
+      this.refs.bar.updateBar();
+    });
   }
 
   render() {
@@ -132,10 +88,12 @@ class Barchart extends Component {
       this.state.response} segment={
       this.state.segment}
         title='Bar Plot'
-        hasSegment={true}
-        />
-        <Bar ref='bar' width="500px" height="500px" dataset={this.state.dataset}/>
-      </div>
+    hasSegment =
+    {
+      true
+    } />
+        <Bar ref='bar' width="500px" height="500px" dataset={this.state.dataset}/ >
+        < /div>
     );
   }
 }
