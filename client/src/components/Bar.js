@@ -19,12 +19,12 @@ class Bar extends React.Component {
     }
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40};
-    var width = 400;
+    var width = 350;
     var height = 300;
     var svg = d3.select(this.refs.bar)
                   .append('svg')
-                  .attr('width', width)
-                  .attr('height', height)
+                  .attr('width', width + 50)
+                  .attr('height', height + 100)
                   .attr('id', 'd3-bar');
     var x =
         d3.scaleBand().domain(data.labels).rangeRound([0, width]).padding(0.1);
@@ -103,12 +103,12 @@ class Bar extends React.Component {
     }
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40};
-    var width = 400;
+    var width = 350;
     var height = 300;
     var svg = d3.select(this.refs.bar)
                   .append('svg')
-                  .attr('width', width)
-                  .attr('height', height)
+                  .attr('width', width + 50 )
+                  .attr('height', height + 100)
                   .attr('id', 'd3-bar');
     var x =
         d3.scaleBand().domain(data.labels).rangeRound([0, width]).padding(0.1);
