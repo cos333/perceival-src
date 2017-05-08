@@ -15,7 +15,7 @@ export class Login extends React.Component {
           <div className="col-md-12 login">
             <div className="above-particles"> 
               <h1>
-                <Typist avgTypingSpeed={90} cursor={{hideWhenDone: true, hideWhenDoneDelay: 120}}>
+                <Typist avgTypingDelay={80} cursor={{hideWhenDone: true, hideWhenDoneDelay: 120}}>
                   Hi! I'm <span className="purple text-semibold">Percy</span>
                 </Typist>
               </h1>
