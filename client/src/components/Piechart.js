@@ -135,11 +135,11 @@ class Piechart extends Component {
 
     var language = [
       {
-        labels: 'brazil',
+        labels: 'en-us',
         props: 0.56,
       },
       {
-        labels: 'canada',
+        labels: 'pt-br',
         props: 0.44,
       }
     ];

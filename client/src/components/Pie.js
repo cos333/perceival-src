@@ -24,15 +24,9 @@ class Pie extends Component {
   }
 
   createArcs() {
-<<<<<<< HEAD
-    var w = this.props.width;
-    var h = this.props.height;
-
-    var outerRadius = 150;
-=======
     var w = 500;
     var h = 500;
->>>>>>> 481ca8253ab5fc0aad3625c52621566a3fd0a150
+    var outerRadius = 150;
     return d3.select(this.refs.pie)
         .append('svg')
         .attr('width', w)
@@ -101,36 +95,15 @@ class Pie extends Component {
         });
   }
 
-  // setText(arcs) {
-  //     var svg = d3.select('svg');
-  //     var arc = d3.arc()
-  //         .innerRadius(0)
-  //         .outerRadius(150);
-  //     var dataset = this.state.dataset;
-  //     var pie = d3.pie().value(function (d) {
-  //         return d.props;
-  //     });
-
-  //     var text = svg.select('.label').selectAll("text")
-  //         .data(pie(dataset), function (d) {
-  //             return d.data.label;
-  //         })
-  //     text.enter()
-  //         .append('text')
-  //         .attr("dy", ".35em")
-  //         .text("")
-  //     // .text(function (d) {
-  //     //     return (d.data.label);
-  //     // });
-  // }
-
   updatePie() {
     var dataset = this.props.dataset;
     var outerRadius = 150;
 
     var arcs = d3.select('g');
     var path = arcs.selectAll('path');
+    var text = arcs.selectAll('text');
     path.remove();
+    text.remove();
     var arc = d3.arc().innerRadius(0).outerRadius(150);
     var pie = d3.pie().value(function(d) {
       return d.props;
@@ -138,30 +111,31 @@ class Pie extends Component {
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
-    path = arcs.selectAll('path')
-               .data(pie(dataset))
-               .enter()
-               .append('path')
-               .attr(
-                   'fill',
-                   function(d, i) {
-                     return color(i)
-                   })
-               .attr('d', arc)
-               .transition()
-               .duration(800)
-               .attrTween(
-                   'd',
-                   function(d) {
-                     var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
-                     return function(t) {
-                       d.endAngle = i(t);
-                       return arc(d);
-                     }
-                   })
-               .each(function(d) {
-                 this._current = d;
-               });
+    arcs.selectAll('path')
+        .data(pie(dataset))
+        .enter()
+        .append('path')
+        .attr(
+            'fill',
+            function(d, i) {
+              return color(i)
+            })
+        .attr('d', arc)
+        .transition()
+        .duration(800)
+        .attrTween(
+            'd',
+            function(d) {
+              var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+              return function(t) {
+                d.endAngle = i(t);
+                return arc(d);
+              }
+            })
+        .each(function(d) {
+          this._current = d;
+        });
+
     arcs.selectAll('text')
         .data(pie(dataset))
         .enter()
@@ -178,6 +152,7 @@ class Pie extends Component {
         .style('fill', 'White')
         .style('font', 'bold 12px Arial')
         .text(function(d, i) {
+          console.log(d);
           return d.data.labels;
         });
   }
