@@ -216,7 +216,6 @@ class Line extends Component {
     lines.attr('stroke-dasharray', totalLength + ' ' + totalLength)
         .attr('stroke-dashoffset', totalLength)
         .transition()
-        .delay(1500)
         .duration(1000)
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0);

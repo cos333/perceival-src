@@ -86,7 +86,6 @@ class Bar extends React.Component {
                        })
                    .attr('y', height)
                    .transition()
-                   .delay(1500)
                    .duration(800)
                    .attr(
                        'y',
