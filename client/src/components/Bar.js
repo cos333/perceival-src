@@ -26,8 +26,6 @@ class Bar extends React.Component {
     var width = 300;
     var height = 300;
 
-    console.log('data', data);
-
     var svg = d3.select(this.refs.bar)
         .append("div")
         .classed("svg-container", true) //container class to make it responsive
@@ -60,7 +58,7 @@ class Bar extends React.Component {
 
     g.append('g')
         .attr('class', 'axis axis--x')
-        .attr('transform', 'translate(0,' + (height - margin.bottom) + ')')
+        .attr('transform', 'translate(0,' + height + ')')
         .call(d3.axisBottom(x));
 
     g.append('g')

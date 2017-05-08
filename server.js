@@ -36,7 +36,7 @@ app.use(jwtCheck);
 
 var url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 var bodydata =  {
-      'plot': 'bar',
+      'app': 'bar',
       'response': 'SecondsSpent',
       'segment': 'age'
   }

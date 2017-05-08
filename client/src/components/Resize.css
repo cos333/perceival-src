@@ -2,13 +2,17 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* aspect ratio */
+    padding-bottom: 100%;
+    /* aspect ratio */
     vertical-align: top;
     overflow: hidden;
+    max-width: 500px;
 }
+
 .svg-content-responsive {
     display: inline-block;
     position: absolute;
     top: 10px;
     left: 0;
+    max-height: 250px;
 }

@@ -11,6 +11,7 @@ import './Grid.css';
 import Barchart from './Barchart';
 import Piechart from './Piechart';
 import Linechart from './Linechart';
+import Export from './Export';
 
 var Grid = React.createClass({
   mixins: [PureRenderMixin],
@@ -49,7 +50,8 @@ var Grid = React.createClass({
           {...this.props}>
         <div key="Barchart"><Barchart /></div>
         <div key="Linechart"><Linechart /></div>
-        <div key="Piechart"><Piechart/></div>
+        <div key="Piechart"><Piechart /></div>
+        <div key="Export"><Export /></div>
       </ReactGridLayout>
     );
   }

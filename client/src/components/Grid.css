@@ -28,6 +28,7 @@
   border-radius: 10px;
   transition: all 200ms ease;
   transition-property: left, top;
+  max-width: 500px
 }
 .react-grid-item.cssTransforms {
   transition-property: transform;
