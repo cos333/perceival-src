@@ -14,9 +14,15 @@ export class Login extends React.Component {
       <div className="root">
           <div className="col-md-12 login">
             <div className="above-particles"> 
+<<<<<<< HEAD
               <h1 className="text-semibold">
                 <Typist avgTypingSpeed={90} cursor={{hideWhenDone: true, hideWhenDoneDelay: 120}}>
                   Hi! I'm Percy.
+=======
+              <h1>
+                <Typist avgTypingSpeed={90} cursor={{hideWhenDone: true, hideWhenDoneDelay: 120}}>
+                  Hi! I'm <span className="purple text-semibold">Percy</span>
+>>>>>>> front-end
                 </Typist>
               </h1>
               <h4>Please login to your acccount</h4>

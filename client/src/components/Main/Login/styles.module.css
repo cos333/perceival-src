@@ -28,4 +28,25 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+<<<<<<< HEAD
+=======
+}
+
+h1 {
+    font-size: 55px !important;
+}
+
+h4 {
+    font-weight: 400 !important;
+    color: #6A5C6E;
+    font-size: 26px;
+}
+
+.text-semibold {
+    font-weight: 600 !important;
+}
+
+.purple {
+    color: #9013FE !important;
+>>>>>>> front-end
 }
