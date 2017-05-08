@@ -11,8 +11,16 @@ export default class AuthService extends EventEmitter {
       auth: {
         redirectUrl: `${window.location.origin}/login`,
         responseType: 'token'
+      }, 
+      allowedConnections: ['google-oauth2'],
+      theme: {
+        logo: 'img/login.png',
+        primaryColor: '#9013FE'
+      },
+      languageDictionary: {
+        title: "Welcome!"
       }
-    })
+      })
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // Add callback for lock `authorization_error` event

@@ -150,7 +150,8 @@ class Piechart extends Component {
         <Dropdown onClick={(key) =>
           this.handleClick(key)} response={
             this.state.response} segment={
-              this.state.segment} />
+              this.state.segment} 
+          title='Pie Chart'/>
         <Pie ref="pie" width="300px" height="300px" dataset={this.state.dataset} />
       </div>
     );
