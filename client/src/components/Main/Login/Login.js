@@ -1,4 +1,4 @@
-import React, { PropTypes as T } from 'react'
+import React from 'react'
 import {ButtonToolbar, Button} from 'react-bootstrap'
 import AuthService from '../../../utils/AuthService'
 import './styles.module.css'

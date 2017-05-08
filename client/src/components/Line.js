@@ -70,7 +70,7 @@ class Line extends Component {
         arr.push(obj);
       }
       return {
-        label: data.label, values: arr
+        label: label, values: arr
       }
 
     });

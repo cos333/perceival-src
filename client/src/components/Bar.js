@@ -5,10 +5,6 @@ import * as d3 from 'd3';
 import React from 'react';
 
 class Bar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.createBars();
   }
@@ -78,7 +74,7 @@ class Bar extends React.Component {
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var rect = g.selectAll('rect')
+    g.selectAll('rect')
                    .data(result)
                    .enter()
                    .append('rect')
@@ -172,7 +168,7 @@ class Bar extends React.Component {
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var rect = g.selectAll('rect')
+    g.selectAll('rect')
                    .data(result)
                    .enter()
                    .append('rect')

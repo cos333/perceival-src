@@ -1,22 +1,22 @@
 import './Chart.css';
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import Pie from './Pie';
 import DropdownSingle from './DropdownSingle';
+import Pie from './Pie';
 
 class Piechart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       response: [
-        { name: 'Number of Clicks', key: 'numclicks' },
-        { name: 'Cents Spent', key: 'centsspent' },
-        { name: 'Seconds Spent', key: 'secondsspent' }
+        {name: 'Number of Clicks', key: 'numclicks'},
+        {name: 'Cents Spent', key: 'centsspent'},
+        {name: 'Seconds Spent', key: 'secondsspent'}
       ],
       segment: [
-        { name: 'Age', key: 'age' }, { name: 'Country', key: 'country' },
-        { name: 'Gender', key: 'gender' }, { name: 'Language', key: 'language' }
+        {name: 'Age', key: 'age'}, {name: 'Country', key: 'country'},
+        {name: 'Gender', key: 'gender'}, {name: 'Language', key: 'language'}
       ],
       url: '',
       currentResponse: 'numclicks',
@@ -43,15 +43,17 @@ class Piechart extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({ url: data.url });
-      });
+    var opts = {'plot': 'bar', 'response': 'SecondsSpent', 'segment': 'age'};
+    var url =
+        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData';
+    fetch(url, {method: 'post', body: JSON.stringify(opts)})
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+          this.setState({url: data.url});
+        });
   };
 
   handleClick(key) {
@@ -62,99 +64,119 @@ class Piechart extends Component {
 
     if (responses.includes(key)) {
       this.updateResponse(key);
-    }
-    else if (segments.includes(key)) {
+    } else if (segments.includes(key)) {
       this.updateSegment(key);
-    }
-    else {
-      console.log("No such key");
+    } else {
     }
   }
-
 
   updateResponse(response) {
     var newData = [
       {
-        labels: '18-24',
-        props: 0.800,
+        labels: 'female',
+        props: 0.732,
       },
       {
-        labels: '25-34',
-        props: 0.050,
-      },
-      {
-        labels: '35-44',
-        props: 0.150,
+        labels: 'male',
+        props: 0.268,
       }
     ];
     console.log('updateResponse called');
-    this.setState({
-      currentResponse: response,
-      dataset: newData
-    }, () => { this.refs.pie.updatePie(); });
+    this.setState({currentResponse: response, dataset: newData}, () => {
+      this.refs.pie.updatePie();
+    });
 
 
     var obj = {
       method: 'GET',
-      headers: { 'response': response, 'segment': this.state.currentSegment }
+      headers: {'response': response, 'segment': this.state.currentSegment}
     };
-
-    fetch(
-      'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          currentResponse: response,
-          url: data.url
-        });
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
   }
 
   updateSegment(segment) {
     console.log('updateSegment called');
-    this.setState({
-      currentSegment: segment
-    }, () => { console.log(this.state); });
+    var newData;
+    var age = [
+      {
+        labels: '18-24',
+        props: 0.298,
+      },
+      {
+        labels: '25-34',
+        props: 0.568,
+      },
+      {
+        labels: '35-44',
+        props: 0.134,
+      }
+    ];
 
+    var gender = [
+      {
+        labels: 'female',
+        props: 0.732,
+      },
+      {
+        labels: 'male',
+        props: 0.268,
+      }
+    ];
 
-    // var obj = {
-    //   method: 'GET',
-    //   headers: { 'response': this.state.currentResponse, 'segment': segment }
-    // };
+    var country = [
+      {
+        labels: 'brazil',
+        props: 0.684,
+      },
+      {
+        labels: 'canada',
+        props: 0.316,
+      }
+    ];
 
-    // fetch(
-    //   'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot', obj)
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     this.setState({
-    //       currentSegment: segment,
-    //       url: data.url
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
+    var language = [
+      {
+        labels: 'brazil',
+        props: 0.56,
+      },
+      {
+        labels: 'canada',
+        props: 0.44,
+      }
+    ];
+    switch (segment) {
+      case 'age':
+        newData = age;  
+        break;  
+     case 'gender':
+        newData = gender;  
+        break;  
+     case 'country':
+        newData = country;  
+        break;  
+     case 'language':
+        newData = language;  
+        break;  
+    }
+    this.setState({ currentSegment:
+        segment, dataset: newData
+    }, () => {
+      this.refs.pie.updatePie();
+    });
   }
 
   render() {
-    return (
-      <div className='Chart'>
-        <DropdownSingle onClick={(key) =>
-          this.handleClick(key)} response={
-            this.state.response} 
-          title='Pie Chart'
-          hasSegment={false}/>
-        <Pie ref="pie" width="500px" height="500px" dataset={this.state.dataset} />
-      </div>
-    );
+    return (<div className = 'Chart'>
+            <DropdownSingle onClick =
+             {
+               (key) => this.handleClick(key)
+             } segment =
+             {
+               this.state.segment
+             } title = 'Pie Chart' />
+            <Pie ref = 'pie' width = '500px' height = '500px' dataset = {
+              this.state.dataset
+            } / >
+        </div>);
   }
 }
 
