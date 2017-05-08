@@ -29,7 +29,7 @@ class Perceival extends Component {
                     </div> 
                 </div> 
                 <div id='row2' className='row'> 
-                    <div className='col-md-6'> 
+                    <div className='col-md-12'> 
                         <div className='card'> 
                             <div className='content'> 
                                 

@@ -24,10 +24,15 @@ class Pie extends Component {
   }
 
   createArcs() {
+<<<<<<< HEAD
     var w = this.props.width;
     var h = this.props.height;
 
     var outerRadius = 150;
+=======
+    var w = 500;
+    var h = 500;
+>>>>>>> 481ca8253ab5fc0aad3625c52621566a3fd0a150
     return d3.select(this.refs.pie)
         .append('svg')
         .attr('width', w)

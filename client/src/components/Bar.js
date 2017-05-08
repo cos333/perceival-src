@@ -19,8 +19,8 @@ class Bar extends React.Component {
     }
 
     var margin = { top: 20, right: 20, bottom: 40, left: 40 };
-    var width = 600;
-    var height = 600;
+    var width = 400;
+    var height = 300;
     var svg = d3.select(this.refs.bar) 
                   .append('svg') 
                   .attr('width', width) 
@@ -117,7 +117,7 @@ class Bar extends React.Component {
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40};
     var width = 400;
-    var height = 600;
+    var height = 300;
 
     console.log('data', data);
 
