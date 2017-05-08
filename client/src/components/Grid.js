@@ -32,8 +32,8 @@ var Grid = React.createClass({
   getInitialState() {
     var w = 5
     var layout = [
-      {i: 'Barchart', x: 0, y: 0, w: 5, h: 10, minW: 5, minH: 10, maxW: 8, maxH: 14},
-      {i: 'Piechart', x: 5, y: 0, w: 6, h: 12, minW: 5, minH: 12, maxW: 7, maxH: 14},
+      {i: 'Barchart', x: 6, y: 0, w: 5, h: 10, minW: 5, minH: 10, maxW: 8, maxH: 14},
+      {i: 'Piechart', x: 0, y: 0, w: 6, h: 12, minW: 5, minH: 12, maxW: 7, maxH: 14},
       {i: 'Linechart', x: 0, y: 10, w: 6, h: 11, minW: 5, minH: 10, maxW: 7, maxH: 12}
     ]
     return { layout: layout};
