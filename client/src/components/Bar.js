@@ -22,9 +22,9 @@ class Bar extends React.Component {
           {label: data.labels[i], stdev: data.stdevs[i], mean: data.means[i]});
     }
 
-    var margin = {top: 20, right: 20, bottom: 40, left: 40};
-    var width = 500;
-    var height = 500;
+    var margin = { top: 20, right: 20, bottom: 40, left: 40 };
+    var width = 600;
+    var height = 600;
     var svg = d3.select(this.refs.bar) 
                   .append('svg') 
                   .attr('width', width) 

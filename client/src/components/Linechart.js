@@ -184,7 +184,7 @@ class Linechart extends Component {
           this.state.segment
         } title='Timeseries' 
         hasSegment={true}/>
-        <Line ref='line' dataset={this.state.dataset} />
+        <Line ref='line' width="500px" height="500px" dataset={this.state.dataset} />
       </div>);
   }
 }

@@ -18,8 +18,8 @@ class Line extends Component {
   }
 
   createLine() {
-    var w = 500;
-    var h = 500;
+    var w = 600;
+    var h = 600;
 
     // For Grid
     // var svg = d3.select(this.refs.line)

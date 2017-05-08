@@ -134,7 +134,7 @@ class Barchart extends Component {
         title='Bar Plot'
         hasSegment={true}
         />
-        <Bar ref='bar' dataset={this.state.dataset}/>
+        <Bar ref='bar' width="500px" height="500px" dataset={this.state.dataset}/>
       </div>
     );
   }
