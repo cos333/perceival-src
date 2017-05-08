@@ -132,6 +132,7 @@ class Barchart extends Component {
       this.state.response} segment={
       this.state.segment}
         title='Bar Plot'
+        hasSegment={true}
         />
         <Bar ref='bar' dataset={this.state.dataset}/>
       </div>

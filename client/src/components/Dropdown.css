@@ -5,8 +5,8 @@
 .btn-options {
     background-color: #F4E7FF !important;
     color: black !important;
-    font-family: 'Source Sans Pro';
-    font-weight: 600 !important;
+    font-family: 'Roboto';
+    font-weight: 500 !important;
 }
 
 .options {
@@ -14,8 +14,8 @@
 }
 
 h4 {
-    font-family: 'Source Sans Pro';
-    font-weight: 600 !important;
+    font-family: 'Roboto';
+    font-weight: 500 !important;
     padding-top: 13px;
     padding-bottom: 13px;
     font-size: 28px;
