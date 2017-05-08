@@ -1,6 +1,7 @@
 // import Dropdown from './Dropdown';
 
 import './Pie.css';
+import './Resize.css';
 
 import * as d3 from 'd3';
 import React, {Component} from 'react';
@@ -26,9 +27,12 @@ class Pie extends Component {
     var w = this.props.width;
     var h = this.props.height;
     return d3.select(this.refs.pie)
+        .append("div")
+        .classed("svg-container", true)
         .append('svg')
-        .attr('width', w)
-        .attr('height', h)
+        .attr("viewBox", "0 0 370 300")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .classed("svg-content-responsive", true)
         .attr('id', 'd3-pie')
         .append('g')
         .attr('class', 'arc')

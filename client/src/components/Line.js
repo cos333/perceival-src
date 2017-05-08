@@ -3,6 +3,7 @@
 
 
 import './Line.css';
+import './Resize.css';
 
 import * as d3 from 'd3';
 import React, {Component} from 'react';
@@ -22,13 +23,18 @@ class Line extends Component {
     var w = 500;
     var h = 300;
     var svg = d3.select(this.refs.line)
-                  .append('svg')
-                  .attr('width', w)
-                  .attr('height', h)
+                  .append("div")
+                  .classed("svg-container", true) //container class to make it responsive
+                  .append("svg")
+                  //responsive SVG needs these 2 attributes and no width and height attr
+                  .attr("preserveAspectRatio", "xMinYMin meet")
+                  .attr("viewBox", "0 0 400 330")
+                  //class to make it responsive
+                  .classed("svg-content-responsive", true)
                   .attr('id', 'd3-line'),
         margin = {top: 20, right: 80, bottom: 30, left: 50},
-        width = svg.attr('width') - margin.left - margin.right,
-        height = svg.attr('height') - margin.top - margin.bottom,
+        width = w - margin.left - margin.right,
+        height = h - margin.top - margin.bottom,
         g = svg.append('g').attr(
             'transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -104,13 +110,18 @@ class Line extends Component {
     var w = 500;
     var h = 300;
     var svg = d3.select(this.refs.line)
-                  .append('svg')
-                  .attr('width', w)
-                  .attr('height', h)
+                  .append("div")
+                  .classed("svg-container", true) //container class to make it responsive
+                  .append("svg")
+                  //responsive SVG needs these 2 attributes and no width and height attr
+                  .attr("preserveAspectRatio", "xMinYMin meet")
+                  .attr("viewBox", "0 0 400 330")
+                  //class to make it responsive
+                  .classed("svg-content-responsive", true)
                   .attr('class', 'linechart'),
         margin = {top: 20, right: 80, bottom: 30, left: 50},
-        width = svg.attr('width') - margin.left - margin.right,
-        height = svg.attr('height') - margin.top - margin.bottom,
+        width = w - margin.left - margin.right,
+        height = h - margin.top - margin.bottom,
         g = svg.append('g').attr(
             'transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
