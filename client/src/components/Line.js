@@ -81,6 +81,7 @@ class Line extends Component {
         .attr('y', 6)
         .attr('dy', '0.71em')
         .attr('fill', '#000')
+        .attr('font-size', '14px')
         .text(yAxisLabel);
 
     var line = d3.line()
@@ -169,8 +170,8 @@ class Line extends Component {
     g.append('g')
         .attr('class', 'axis axis--x')
         .attr('transform', 'translate(0,' + height + ')')
-      .call(d3.axisBottom(x));
-    
+        .call(d3.axisBottom(x));
+
     var yAxisObject = this.props.response;
     var yAxisLabel = yAxisObject[1].name;
 
