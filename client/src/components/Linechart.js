@@ -123,7 +123,9 @@ class Linechart extends Component {
         <Dropdown onClick={
       (key) => this.handleClick(key)} response={
       this.state.response} segment={
-      this.state.segment} />
+      this.state.segment} 
+      title='Timeseries'
+      />
         <Line ref="line" dataset={this.state.dataset} />
       </div>
     );

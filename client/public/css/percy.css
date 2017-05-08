@@ -69,6 +69,12 @@ a:active {
     background-size: 140% 140%;
 }
 
+
+.btn-logout {
+    background-color: #FF4149 !important;
+    margin: 14px 14px !important;
+}
+
 @media (max-width: 992px) {
     .top-bar {
         background-color: #7d1fd0;
@@ -76,5 +82,10 @@ a:active {
     }
     .navbar-toggle {
         color: white;
+    }
+
+    .btn-logout {
+        background-color: white !important;
+        color: #7d1fd0 !important;
     }
 }

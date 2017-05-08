@@ -130,7 +130,9 @@ class Barchart extends Component {
         <Dropdown onClick={
       (key) => this.handleClick(key)} response={
       this.state.response} segment={
-      this.state.segment} />
+      this.state.segment}
+        title='Bar Plot'
+        />
         <Bar ref='bar' dataset={this.state.dataset}/>
       </div>
     );
