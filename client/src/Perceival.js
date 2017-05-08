@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Barchart from './components/Barchart';
 import Piechart from './components/Piechart';
 import Linechart from './components/Linechart';
+import Export from './components/Export';
 import Nav from './components/Nav';
 
 class Perceival extends Component {
@@ -39,6 +40,7 @@ class Perceival extends Component {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="content">
+                                <Export/>
                             </div>
                         </div>
                     </div>
