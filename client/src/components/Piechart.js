@@ -145,21 +145,19 @@ class Piechart extends Component {
     ];
     switch (segment) {
       case 'age':
-        newData = age;  
-        break;  
-     case 'gender':
-        newData = gender;  
-        break;  
-     case 'country':
-        newData = country;  
-        break;  
-     case 'language':
-        newData = language;  
-        break;  
+        newData = age;
+        break;
+      case 'gender':
+        newData = gender;
+        break;
+      case 'country':
+        newData = country;
+        break;
+      case 'language':
+        newData = language;
+        break;
     }
-    this.setState({ currentSegment:
-        segment, dataset: newData
-    }, () => {
+    this.setState({currentSegment: segment, dataset: newData}, () => {
       this.refs.pie.updatePie();
     });
   }
