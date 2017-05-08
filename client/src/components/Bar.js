@@ -23,19 +23,24 @@ class Bar extends React.Component {
     }
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40};
-    var width = 300;
-    var height = 300;
-
-    var svg = d3.select(this.refs.bar)
-        .append("div")
-        .classed("svg-container", true) //container class to make it responsive
-        .append("svg")
-        //responsive SVG needs these 2 attributes and no width and height attr
-        .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "0 0 400 330")
-        //class to make it responsive
-        .classed("svg-content-responsive", true)
-        .attr('id', 'd3-bar');
+    var width = 500;
+    var height = 500;
+    var svg = d3.select(this.refs.bar) 
+                  .append('svg') 
+                  .attr('width', width) 
+                  .attr('height', height) 
+                  .attr('id', 'd3-bar'); 
+// With Grid    
+    // var svg = d3.select(this.refs.bar)
+    //     .append("div")
+    //     .classed("svg-container", true) //container class to make it responsive
+    //     .append("svg")
+    //     //responsive SVG needs these 2 attributes and no width and height attr
+    //     .attr("preserveAspectRatio", "xMinYMin meet")
+    //     .attr("viewBox", "0 0 400 330")
+    //     //class to make it responsive
+    //     .classed("svg-content-responsive", true)
+    //     .attr('id', 'd3-bar');
 
     var x =
         d3.scaleBand().domain(data.labels).rangeRound([0, width]).padding(0.1);

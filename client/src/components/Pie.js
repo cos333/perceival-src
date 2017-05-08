@@ -27,12 +27,9 @@ class Pie extends Component {
     var w = this.props.width;
     var h = this.props.height;
     return d3.select(this.refs.pie)
-        .append("div")
-        .classed("svg-container", true)
         .append('svg')
-        .attr("viewBox", "0 0 370 300")
-        .attr("preserveAspectRatio", "xMinYMin meet")
-        .classed("svg-content-responsive", true)
+        .attr('width', w)
+        .attr('height', h)
         .attr('id', 'd3-pie')
         .append('g')
         .attr('class', 'arc')

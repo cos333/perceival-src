@@ -19,19 +19,26 @@ class Line extends Component {
 
   createLine() {
     var w = 500;
-    var h = 300;
+    var h = 500;
+
+    // For Grid
+    // var svg = d3.select(this.refs.line)
+    //           .append('div')
+    //           .classed(
+    //               'svg-container',
+    //               true)  // container class to make it responsive
+    //           .append('svg')
+    //           // responsive SVG needs these 2 attributes and no width and
+    //           // height attr
+    //           .attr('preserveAspectRatio', 'xMinYMin meet')
+    //           .attr('viewBox', '0 0 400 330')
+    //           // class to make it responsive
+    //           .classed('svg-content-responsive', true)
+    //           .attr('id', 'd3-line'),
     var svg = d3.select(this.refs.line)
-                  .append('div')
-                  .classed(
-                      'svg-container',
-                      true)  // container class to make it responsive
                   .append('svg')
-                  // responsive SVG needs these 2 attributes and no width and
-                  // height attr
-                  .attr('preserveAspectRatio', 'xMinYMin meet')
-                  .attr('viewBox', '0 0 400 330')
-                  // class to make it responsive
-                  .classed('svg-content-responsive', true)
+                  .attr('width', w)
+                  .attr('height', h)
                   .attr('id', 'd3-line'),
         margin = {top: 20, right: 80, bottom: 30, left: 50},
         width = w - margin.left - margin.right,
@@ -98,22 +105,19 @@ class Line extends Component {
                      return y(d.y);
                    });
 
-    var user = g.selectAll('.user')
-      .data(users)
-      .enter()
-      .append('g')
-      .attr('class', 'user');
-    
+    var user = g.selectAll('.user').data(users).enter().append('g').attr(
+        'class', 'user');
+
     var lines = user.append('path')
-                   .attr('class', 'line')
-                   .attr(
-                       'd',
-                       function(d) {
-                         return line(d.values);
-                       })
-                   .style('stroke', function(d) {
-                     return z(d.label);
-                   });
+                    .attr('class', 'line')
+                    .attr(
+                        'd',
+                        function(d) {
+                          return line(d.values);
+                        })
+                    .style('stroke', function(d) {
+                      return z(d.label);
+                    });
     var totalLength = lines.node().getTotalLength();
 
     lines.attr('stroke-dasharray', totalLength + ' ' + totalLength)
@@ -122,15 +126,17 @@ class Line extends Component {
         .delay(1500)
         .duration(1000)
         .ease(d3.easeLinear)
-      .attr('stroke-dashoffset', 0);
-    
-  // user.append("text")
-  //     .datum(function(d) { return {label: d.label, value: d.values[d.values.length - 1]}; })
-  //     .attr("transform", function(d) { return "translate(" + x(d.value.x) /2 + "," + y(d.value.y) /2 + ")"; })
-  //     .attr("x", 3)
-  //     .attr("dy", "0.35em")
-  //     .style("font", "10px sans-serif")
-  //     .text(function(d) { return d.label; });
+        .attr('stroke-dashoffset', 0);
+
+    // user.append("text")
+    //     .datum(function(d) { return {label: d.label, value:
+    //     d.values[d.values.length - 1]}; })
+    //     .attr("transform", function(d) { return "translate(" + x(d.value.x)
+    //     /2 + "," + y(d.value.y) /2 + ")"; })
+    //     .attr("x", 3)
+    //     .attr("dy", "0.35em")
+    //     .style("font", "10px sans-serif")
+    //     .text(function(d) { return d.label; });
   }
 
   updateLine() {
@@ -221,7 +227,6 @@ class Line extends Component {
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0);
   }
-
 
 
 

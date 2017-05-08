@@ -152,7 +152,7 @@ class Piechart extends Component {
             this.state.response} 
           title='Pie Chart'
           hasSegment={false}/>
-        <Pie ref="pie" width="300px" height="300px" dataset={this.state.dataset} />
+        <Pie ref="pie" width="500px" height="500px" dataset={this.state.dataset} />
       </div>
     );
   }
