@@ -270,7 +270,7 @@ class Linechart extends Component {
     return (<div className='Chart'>
       {/*<Dropdown onClick={(key) => this.handleClick(key)} response={this.state.response} segment={this.state.segment} title='Timeseries' hasSegment={true} />*/}
       <DropdownThree onClick={(key) => this.handleClick(key)} response={this.state.response} segment={this.state.segment} display={this.state.display} title='Timeseries' hasSegment={true} />
-      <Line ref='line' width="500px" height="500px" dataset={this.state.dataset} />
+      <Line ref='line' width="500px" height="500px" response={this.state.response} segment={this.state.segment} dataset={this.state.dataset} />
     </div>);
   }
 }

@@ -70,6 +70,8 @@ class Line extends Component {
         .attr('class', 'axis axis--x')
         .attr('transform', 'translate(0,' + height + ')')
         .call(d3.axisBottom(x));
+    var yAxisObject = this.props.response;
+    var yAxisLabel = yAxisObject[0].name;
 
     g.append('g')
         .attr('class', 'axis axis--y')
@@ -79,7 +81,7 @@ class Line extends Component {
         .attr('y', 6)
         .attr('dy', '0.71em')
         .attr('fill', '#000')
-        .text('Sales, $');
+        .text(yAxisLabel);
 
     var line = d3.line()
                    .curve(d3.curveBasis)
@@ -112,16 +114,6 @@ class Line extends Component {
         .duration(1000)
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0);
-
-    // user.append("text")
-    //     .datum(function(d) { return {label: d.label, value:
-    //     d.values[d.values.length - 1]}; })
-    //     .attr("transform", function(d) { return "translate(" + x(d.value.x)
-    //     /2 + "," + y(d.value.y) /2 + ")"; })
-    //     .attr("x", 3)
-    //     .attr("dy", "0.35em")
-    //     .style("font", "10px sans-serif")
-    //     .text(function(d) { return d.label; });
   }
 
   updateLine() {
@@ -177,7 +169,10 @@ class Line extends Component {
     g.append('g')
         .attr('class', 'axis axis--x')
         .attr('transform', 'translate(0,' + height + ')')
-        .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x));
+    
+    var yAxisObject = this.props.response;
+    var yAxisLabel = yAxisObject[1].name;
 
     g.append('g')
         .attr('class', 'axis axis--y')
@@ -187,7 +182,7 @@ class Line extends Component {
         .attr('y', 6)
         .attr('dy', '0.71em')
         .attr('fill', '#000')
-        .text('Sales, $');
+        .text(yAxisLabel);
 
     var line = d3.line()
                    .curve(d3.curveBasis)
