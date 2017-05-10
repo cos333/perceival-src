@@ -43,16 +43,35 @@ class Piechart extends Component {
   }
 
   componentDidMount() {
-    var opts = {'plot': 'bar', 'response': 'SecondsSpent', 'segment': 'age'};
+    var data = {'plot': 'pie', 'response': 'centsspent', 'segment': 'age'};
+
+    // var formData = new FormData();
+    // for (var name in data) {
+    //   formData.append(name, data[name]);
+    // }
+
     var url =
-        'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getPlotData';
-    fetch(url, {method: 'post', body: JSON.stringify(opts)})
+        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
+
+    const searchParams = Object.keys(data)
+                             .map((key) => {
+                               return encodeURIComponent(key) + '=' +
+                                   encodeURIComponent(data[key]);
+                             })
+                             .join('&');
+    fetch(url, {method: 'POST', body: searchParams})
         .then((res) => {
           return res.json();
         })
         .then((data) => {
           console.log(data);
-          this.setState({url: data.url});
+          // this.setState({
+          //   currentResponse: response,
+          //   url: data.url
+          // });
+        })
+        .catch((err) => {
+          console.log(err.message);
         });
   };
 
@@ -85,12 +104,6 @@ class Piechart extends Component {
     this.setState({currentResponse: response, dataset: newData}, () => {
       this.refs.pie.updatePie();
     });
-
-
-    var obj = {
-      method: 'GET',
-      headers: {'response': response, 'segment': this.state.currentSegment}
-    };
   }
 
   updateSegment(segment) {

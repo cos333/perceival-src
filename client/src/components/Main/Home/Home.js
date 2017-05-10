@@ -1,9 +1,9 @@
-import React, { PropTypes as T } from 'react'
+import React, {Component} from 'react'
 import {Button} from 'react-bootstrap'
 import AuthService from '../../../utils/AuthService'
 import styles from './styles.module.css'
 
-export class Home extends React.Component {
+export class Home extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {

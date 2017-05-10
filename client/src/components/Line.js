@@ -96,7 +96,7 @@ class Line extends Component {
     var user = g.selectAll('.user').data(users).enter().append('g').attr(
         'class', 'user');
 
-    var lines = user.append('path')
+    var linesChart = user.append('path')
                     .attr('class', 'line')
                     .attr(
                         'd',
@@ -106,9 +106,9 @@ class Line extends Component {
                     .style('stroke', function(d) {
                       return z(d.label);
                     });
-    var totalLength = lines.node().getTotalLength();
+    var totalLength = linesChart.node().getTotalLength();
 
-    lines.attr('stroke-dasharray', totalLength + ' ' + totalLength)
+    linesChart.attr('stroke-dasharray', totalLength + ' ' + totalLength)
         .attr('stroke-dashoffset', totalLength)
         .transition()
         .delay(1500)
@@ -197,7 +197,7 @@ class Line extends Component {
     var user = g.selectAll('.user').data(users).enter().append('g').attr(
         'class', 'user');
 
-    var lines = user.append('path')
+    var linesChart = user.append('path')
                     .attr('class', 'line')
                     .attr(
                         'd',
@@ -207,9 +207,9 @@ class Line extends Component {
                     .style('stroke', function(d) {
                       return z(d.label);
                     });
-    var totalLength = lines.node().getTotalLength();
+    var totalLength = linesChart.node().getTotalLength();
 
-    lines.attr('stroke-dasharray', totalLength + ' ' + totalLength)
+    linesChart.attr('stroke-dasharray', totalLength + ' ' + totalLength)
         .attr('stroke-dashoffset', totalLength)
         .transition()
         .duration(1000)

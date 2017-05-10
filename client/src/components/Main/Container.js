@@ -1,15 +1,6 @@
-import React, { PropTypes as T } from 'react'
-import { Jumbotron } from 'react-bootstrap'
+import React, {Component} from 'react'
 
-import Home from './Home/Home'
-import Login from './Login/Login'
-// import styles from './styles.module.css'
-
-export class Container extends React.Component {
-  static contextTypes = {
-    router: T.object
-  }
-
+export class Container extends Component {
   render() {
     let children = null;
     if (this.props.children) {

@@ -32,13 +32,11 @@ class Perceival extends Component {
                     <div className='col-md-12'> 
                         <div className='card'> 
                             <div className='content'> 
-                                
                                 <Linechart /> 
                             </div> 
                         </div> 
                     </div> 
                 </div> 
-                {/*<Grid />*/}
             </div>
         );
     }

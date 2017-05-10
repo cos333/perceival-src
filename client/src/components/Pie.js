@@ -158,7 +158,7 @@ class Pie extends Component {
   }
 
   render() {
-    return (<div><div ref = 'pie'></div>
+    return (<div><div ref='pie'></div>
             </div>)
   }
 }

@@ -14,29 +14,29 @@ app.use(cors());
 
 app.set('port', (process.env.PORT || 3001));
 
-Express only serves static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
-// app.use(express.static('client/build'));
+// Express only serves static assets in production
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
+// }
+app.use(express.static('client/build'));
 
-var jwtCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: "https://sheonhan.auth0.com/.well-known/jwks.json"
-    }),
-    audience: 'perceival.tech',
-    issuer: "https://sheonhan.auth0.com/",
-    algorithms: ['RS256']
-});
+// var jwtCheck = jwt({
+//     secret: jwks.expressJwtSecret({
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         jwksUri: "https://sheonhan.auth0.com/.well-known/jwks.json"
+//     }),
+//     audience: 'perceival.tech',
+//     issuer: "https://sheonhan.auth0.com/",
+//     algorithms: ['RS256']
+// });
 
-app.use(jwtCheck);
+// app.use(jwtCheck);
 
 var url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 var bodydata =  {
-      'app': 'bar',
+      'plot': 'bar',
       'response': 'SecondsSpent',
       'segment': 'age'
   }
