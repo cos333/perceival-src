@@ -18,23 +18,9 @@ class Piechart extends Component {
         {name: 'Age', key: 'age'}, {name: 'Country', key: 'country'},
         {name: 'Gender', key: 'gender'}, {name: 'Language', key: 'language'}
       ],
-      url: '',
       currentResponse: 'numclicks',
       currentSegment: 'age',
-      dataset: [
-        {
-          labels: '18-24',
-          props: 0.298,
-        },
-        {
-          labels: '25-34',
-          props: 0.568,
-        },
-        {
-          labels: '35-44',
-          props: 0.134,
-        }
-      ]
+      dataset: []
     };
 
     this.updateResponse = this.updateResponse.bind(this);
@@ -43,36 +29,7 @@ class Piechart extends Component {
   }
 
   componentDidMount() {
-    var data = {'plot': 'pie', 'response': 'centsspent', 'segment': 'age'};
-
-    // var formData = new FormData();
-    // for (var name in data) {
-    //   formData.append(name, data[name]);
-    // }
-
-    var url =
-        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
-
-    const searchParams = Object.keys(data)
-                             .map((key) => {
-                               return encodeURIComponent(key) + '=' +
-                                   encodeURIComponent(data[key]);
-                             })
-                             .join('&');
-    fetch(url, {method: 'POST', body: searchParams})
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-          // this.setState({
-          //   currentResponse: response,
-          //   url: data.url
-          // });
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+    this.fetchData('numclicks', 'age');
   };
 
   handleClick(key) {
@@ -90,89 +47,49 @@ class Piechart extends Component {
   }
 
   updateResponse(response) {
-    var newData = [
-      {
-        labels: 'female',
-        props: 0.732,
-      },
-      {
-        labels: 'male',
-        props: 0.268,
-      }
-    ];
-    console.log('updateResponse called');
-    this.setState({currentResponse: response, dataset: newData}, () => {
-      this.refs.pie.updatePie();
-    });
   }
 
   updateSegment(segment) {
-    console.log('updateSegment called');
-    var newData;
-    var age = [
-      {
-        labels: '18-24',
-        props: 0.298,
-      },
-      {
-        labels: '25-34',
-        props: 0.568,
-      },
-      {
-        labels: '35-44',
-        props: 0.134,
-      }
-    ];
+    console.log('Update segment');
+    this.fetchData(this.state.currentResponse, segment);
+  }
 
-    var gender = [
-      {
-        labels: 'female',
-        props: 0.732,
-      },
-      {
-        labels: 'male',
-        props: 0.268,
-      }
-    ];
+  fetchData(response, segment) {
+    var data = {'plot': 'pie', 'response': response, 'segment': segment};
+    var url =
+        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 
-    var country = [
-      {
-        labels: 'brazil',
-        props: 0.684,
-      },
-      {
-        labels: 'canada',
-        props: 0.316,
-      }
-    ];
+    const searchParams = Object.keys(data)
+                             .map((key) => {
+                               return encodeURIComponent(key) + '=' +
+                                   encodeURIComponent(data[key]);
+                             })
+                             .join('&');
+    fetch(url, {method: 'POST', body: searchParams})
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          this.setState({
+            dataset: this.transformData(data),
+            currentResponse: response,
+            currentSegment: segment
+          });
+          this.refs.pie.updatePie();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+  }
 
-    var language = [
-      {
-        labels: 'en-us',
-        props: 0.56,
-      },
-      {
-        labels: 'pt-br',
-        props: 0.44,
-      }
-    ];
-    switch (segment) {
-      case 'age':
-        newData = age;
-        break;
-      case 'gender':
-        newData = gender;
-        break;
-      case 'country':
-        newData = country;
-        break;
-      case 'language':
-        newData = language;
-        break;
+  transformData(data) {
+    var length = data.labels.length;
+    var dataset = [];
+    for (var i = 0; i < length; i++) {
+      var obj = {labels: data.labels[i], props: data.props[i]};
+      dataset.push(obj)
     }
-    this.setState({currentSegment: segment, dataset: newData}, () => {
-      this.refs.pie.updatePie();
-    });
+    return dataset;
   }
 
   render() {
