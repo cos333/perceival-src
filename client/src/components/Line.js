@@ -8,7 +8,6 @@ import React, {Component} from 'react';
 class Line extends Component {
   constructor() {
     super();
-<<<<<<< HEAD
     this.createLines = this.createLines.bind(this);
   }
 
