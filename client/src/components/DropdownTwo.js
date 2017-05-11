@@ -9,14 +9,7 @@ function List(props) {
 }
 
 class Dropdown_two extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { response: 'centsspent', segment: 'gender' };
-
-        this.updateResponse = this.updateResponse.bind(this);
-        this.updateSegment = this.updateSegment.bind(this);
-    }
-
+    
     renderResponse(i) {
         const response = this.props.response;
         return <List onClick={() => this.props.onClick(response[i].key)} data={response[i]} />;
@@ -25,48 +18,6 @@ class Dropdown_two extends Component {
     renderSegment(i) {
         const segment = this.props.segment;
         return <List onClick={() => this.props.onClick(segment[i].key)} data={segment[i]} />;
-    }
-
-    updateResponse(response) {
-        console.log('updateResponse Called');
-
-        const header = {
-            method: 'GET',
-            headers: { 'response': response, 'segment': this.state.segment }
-        };
-
-        fetch(
-            'https://6o688hd6c7.execute-api.us-west-2.amazonaws.com/prod/getMeanBarPlot',
-            header)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                console.log('Data:');
-                console.log(data);
-                this.setState({ response: response });
-            });
-    }
-
-    updateSegment(segment) {
-        console.log('updateSegment Called');
-
-        const header = {
-            method: 'GET',
-            headers: { 'response': this.state.response, 'segment': segment }
-        };
-
-        fetch(
-            'https://1jy0hfu5ai.execute-api.us-west-2.amazonaws.com/prod/printEvent',
-            header)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                console.log('Data:');
-                console.log(data);
-                this.setState({ segment: segment });
-            });
     }
 
     render() {

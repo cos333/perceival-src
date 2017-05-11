@@ -22,14 +22,12 @@ class Piechart extends Component {
       currentSegment: 'age',
       dataset: []
     };
-
-    this.updateResponse = this.updateResponse.bind(this);
     this.updateSegment = this.updateSegment.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    this.fetchData('numclicks', 'age');
+    this.fetchData(this.state.currentResponse, this.state.currentSegment);
   };
 
   handleClick(key) {
@@ -44,9 +42,6 @@ class Piechart extends Component {
       this.updateSegment(key);
     } else {
     }
-  }
-
-  updateResponse(response) {
   }
 
   updateSegment(segment) {
@@ -75,7 +70,7 @@ class Piechart extends Component {
             currentResponse: response,
             currentSegment: segment
           });
-          this.refs.pie.updatePie();
+          this.refs.pie.createPie();
         })
         .catch((err) => {
           console.log(err.message);

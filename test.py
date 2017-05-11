@@ -9,7 +9,7 @@ TODO: add authorization via the header
 url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 
 # r = requests.post(url, data={'plot': 'pie', 'response': 'centsspent', 'segment': 'language'})
-r = requests.post(url, data={'plot': 'pie', 'response': 'centsspent', 'segment': 'age'})
+r = requests.post(url, data={'plot': 'timeseries', 'response': 'centsspent', 'segment': 'age', 'display': 'sum'})
 
 print('Status code: ' + str(r.status_code))
 print(r.text[1:-1]) # strips quotation marks @ first and last index by subsetting

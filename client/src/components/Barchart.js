@@ -3,7 +3,7 @@ import './Chart.css';
 import React, {Component} from 'react';
 
 import Bar from './Bar';
-import Dropdown from './Dropdown';
+import DropdownTwo from './Dropdown';
 
 class Barchart extends Component {
   constructor(props) {
@@ -18,14 +18,9 @@ class Barchart extends Component {
         {name: 'Age', key: 'age'}, {name: 'Country', key: 'country'},
         {name: 'Gender', key: 'gender'}, {name: 'Language', key: 'language'}
       ],
-      url: '',
       currentResponse: 'numclicks',
       currentSegment: 'age',
-      dataset: {
-        'labels': ['18-24', '25-34', '35-44'],
-        'stdevs': [3.0, 2.0, 14.0],
-        'means': [35.3315, 17.2052, 25.6531]
-      }
+      dataset: []
     };
 
     this.updateResponse = this.updateResponse.bind(this);
@@ -33,11 +28,12 @@ class Barchart extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount(){};
+  componentDidMount() {
+    this.fetchData(this.state.currentResponse, this.state.currentSegment);
+  };
 
   handleClick(key) {
     console.log('handleClick Called. Key is ' + key);
-
 
     var responses = ['numclicks', 'centsspent', 'secondsspent'];
     var segments = ['age', 'country', 'gender', 'language'];
@@ -53,48 +49,63 @@ class Barchart extends Component {
 
 
   updateResponse(response) {
-    console.log('updateResponse called');
-
-    var newData = {
-      'labels': ['18-24', '25-34', '35-44'],
-      'stdevs': [0.5302811935452145, 0.8727200977257314, 1.167953163111855],
-      'means': [0.2349, 0.7046, 1.5767]
-    };
-
-    this.setState({currentResponse: response, dataset: newData}, () => {
-      this.refs.bar.updateBar();
-    });
+    console.log('Update response');
+    this.fetchData(response, this.state.currentSegment);
   }
 
   updateSegment(segment) {
-    console.log('updateSegment called');
+    console.log('Update segment');
+    this.fetchData(this.state.currentResponse, segment);
+  }
 
-    var newData = {
-      'labels': ['brazil', 'canada'],
-      'stdevs': [1.0030301889098718, 0.5812610263110876],
-      'means': [0.8632, 0.2884]
-    };
+  fetchData(response, segment) {
+    var data = {'plot': 'bar', 'response': response, 'segment': segment};
+    var url =
+        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 
-    this.setState({currentSegment: segment, dataset: newData}, () => {
-      this.refs.bar.updateBar();
-    });
+    const searchParams = Object.keys(data)
+                             .map((key) => {
+                               return encodeURIComponent(key) + '=' +
+                                   encodeURIComponent(data[key]);
+                             })
+                             .join('&');
+
+    fetch(url, {method: 'POST', body: searchParams})
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          this.setState({
+            dataset: data,
+            currentResponse: response,
+            currentSegment: segment
+          });
+          this.refs.bar.createBars();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
   }
 
   render() {
-    return (
-      <div className='Chart'>
-        <Dropdown onClick={
-      (key) => this.handleClick(key)} response={
-      this.state.response} segment={
-      this.state.segment}
-        title='Bar Plot'
-    hasSegment =
-    {
-      true
-    } />
-        <Bar ref='bar' width="500px" height="500px" dataset={this.state.dataset}/ >
-        < /div>
-    );
+    return (<div className = 'Chart'>
+            <DropdownTwo onClick =
+             {
+               (key) => this.handleClick(key)
+             } response =
+             {
+               this.state.response
+             } segment =
+             {
+               this.state.segment
+             } hasSegment =
+             {
+               true
+             } title = 'Bar Plot' />
+            <Bar ref = 'bar' width = '500px' height = '500px' dataset = {
+              this.state.dataset
+            } />
+      </div>);
   }
 }
 

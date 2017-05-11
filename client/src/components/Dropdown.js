@@ -9,11 +9,6 @@ function List(props) {
 }
 
 class Dropdown extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { response: 'centsspent', segment: 'gender' };
-    }
-
     renderResponse(i) {
         const response = this.props.response;
         return <List onClick={() => this.props.onClick(response[i].key)} data={response[i]} />;

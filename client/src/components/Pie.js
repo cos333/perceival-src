@@ -9,12 +9,12 @@ import React, {Component} from 'react';
 class Pie extends Component {
   constructor() {
     super();
-    this.updatePie = this.updatePie.bind(this);
+    this.createPie = this.createPie.bind(this);
   }
 
   componentDidMount() {
     var arcs = this.createArcs();
-    this.updatePie();
+    this.createPie();
   }
 
   createArcs() {
@@ -34,7 +34,7 @@ class Pie extends Component {
         .attr('class', 'label');
   }
 
-  updatePie() {
+  createPie() {
     var dataset = this.props.dataset;
     var outerRadius = 150;
 
