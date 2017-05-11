@@ -78,7 +78,6 @@ class Linechart extends Component {
       'segment': segment,
       'display': display
     };
-    console.log('Header', data);
     var url =
         'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 

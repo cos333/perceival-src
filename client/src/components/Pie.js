@@ -90,7 +90,6 @@ class Pie extends Component {
         .style('fill', 'White')
         .style('font', 'bold 12px Arial')
         .text(function(d, i) {
-          console.log(d);
           return d.data.labels;
         });
   }

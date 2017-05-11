@@ -14,13 +14,3 @@ print('Status code: ' + str(r.status_code))
 print(r.text[1:-1]) # strips quotation marks @ first and last index by subsetting
 print ''
 print(r.headers) # strips quotation marks @ first and last index by subsetting
-
-'''
-{
-  "body": {
-      "plot": "bar",
-      "response": "SecondsSpent",
-      "segment": "age"
-  }
-}
-'''

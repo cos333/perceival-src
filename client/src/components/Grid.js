@@ -16,10 +16,6 @@ import Export from './Export';
 var Grid = React.createClass({
   mixins: [PureRenderMixin],
 
-  propTypes: {
-    onLayoutChange: PropTypes.func.isRequired
-  },
-
   getDefaultProps() {
     return {
       className: "layout",

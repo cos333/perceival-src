@@ -3,6 +3,7 @@ import './Perceival.css';
 import React, {Component} from 'react';
 
 import Barchart from './components/Barchart';
+import Export from './components/Export';
 import Linechart from './components/Linechart';
 import Piechart from './components/Piechart';
 
@@ -36,7 +37,12 @@ class Perceival extends Component {
                             </div> 
                         </div> 
                     </div> 
-                </div> 
+                </div>
+                <div id='row2' className='row'> 
+                    <div className='col-md-12'>
+                        <Export /> 
+                    </div> 
+                </div>
             </div>
         );
     }
