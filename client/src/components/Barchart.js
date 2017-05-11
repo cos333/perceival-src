@@ -82,7 +82,7 @@ class Barchart extends Component {
 
   render() {
     return (
-      <div className='Chart'>
+      <div className='Chart' id="Barchart">
         <Dropdown onClick={
       (key) => this.handleClick(key)} response={
       this.state.response} segment={
@@ -92,7 +92,7 @@ class Barchart extends Component {
     {
       true
     } />
-        <Bar ref='bar' width="500px" height="500px" dataset={this.state.dataset}/ >
+        <Bar ref='bar' dataset={this.state.dataset}/ >
         < /div>
     );
   }

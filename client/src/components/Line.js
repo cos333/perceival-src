@@ -1,7 +1,6 @@
 // http://bl.ocks.org/bobmonteverde/2070123
 // https://code.tutsplus.com/tutorials/building-a-multi-line-chart-using-d3js-part-2--cms-22973
 import './Line.css';
-import './Resize.css';
 
 import * as d3 from 'd3';
 import React, {Component} from 'react';
@@ -14,11 +13,21 @@ class Line extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.createLine();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    d3.select("#d3-line").remove();
     this.createLine();
   }
 
   createLine() {
-    var w = 940;
+    var w = document.getElementById('Linechart').offsetWidth;
     var h = 300;
     var svg = d3.select(this.refs.line)
                   .append('svg')
@@ -120,7 +129,7 @@ class Line extends Component {
   updateLine() {
     var lines = d3.select('#d3-line');
     lines.remove();
-    var w = 940;
+    var w = document.getElementById('Linechart').offsetWidth;
     var h = 300;
     var svg = d3.select(this.refs.line)
                   .append('svg')
