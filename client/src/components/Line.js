@@ -1,7 +1,6 @@
 // http://bl.ocks.org/bobmonteverde/2070123
 // https://code.tutsplus.com/tutorials/building-a-multi-line-chart-using-d3js-part-2--cms-22973
 import './Line.css';
-import './Resize.css';
 
 import * as d3 from 'd3';
 import React, {Component} from 'react';
@@ -21,7 +20,6 @@ class Line extends Component {
   } 
 
   handleResize = () => { 
-    d3.select("#d3-line").remove(); 
     this.createLines(); 
   } 
 
@@ -49,8 +47,16 @@ class Line extends Component {
     var dataset = this.props.dataset;
     var yOne = dataset[0].y;
     var yTwo = dataset[1].y;
+    let yArray;
 
-    var yArray = yOne.concat(yTwo);
+    if (dataset.length == 3) {
+      var yThree = dataset[2].y;
+      yArray = yOne.concat(yTwo).concat(yThree);
+    } 
+    else {
+      yArray = yOne.concat(yTwo);
+    }
+
     var xArray = dataset[0].x.map(function(d) {
       return parseTime(d)
     });
@@ -83,6 +89,7 @@ class Line extends Component {
     var yAxisObject = this.props.response;
     var yAxisLabel = yAxisObject[1].name;
 
+    // add y axis label
     g.append('g')
         .attr('class', 'axis axis--y')
         .call(d3.axisLeft(y))
