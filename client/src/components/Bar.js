@@ -5,6 +5,19 @@ import * as d3 from 'd3';
 import React from 'react';
 
 class Bar extends React.Component {
+  componentDidMount() { 
+    window.addEventListener('resize', this.handleResize); 
+  } 
+
+  componentWillUnmount() { 
+    window.removeEventListener('resize', this.handleResize); 
+  } 
+
+  handleResize = () => { 
+    d3.select("#d3-bar").remove(); 
+    this.createBars(); 
+  } 
+
   createBars() {
     var bars = d3.select('#d3-bar');
     bars.remove();
@@ -17,15 +30,15 @@ class Bar extends React.Component {
     }
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40};
-    var width = 350;
+    var width = document.getElementById('Barchart').offsetWidth;
     var height = 300;
     var svg = d3.select(this.refs.bar)
                   .append('svg')
-                  .attr('width', width + 50 )
-                  .attr('height', height + 100)
+                  .attr('width', width)
+                  .attr('height', height + margin.top + margin.bottom)
                   .attr('id', 'd3-bar');
     var x =
-        d3.scaleBand().domain(data.labels).rangeRound([0, width]).padding(0.1);
+        d3.scaleBand().domain(data.labels).rangeRound([0, width - margin.left - margin.right]).padding(0.1);
     var y = d3.scaleLinear().rangeRound([height, 0]);
 
     var g = svg.append('g').attr(
