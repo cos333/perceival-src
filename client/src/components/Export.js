@@ -46,12 +46,16 @@ class Export extends Component {
   render() {
     return (
       <div>
-        <Button bsStyle='primary' id='app-button'>
-          <a id='app' href={this.state.appPath} download>Export App Data</a>
-        </Button>
-        <Button bsStyle='primary' >
-          <a id='user' href={this.state.userPath} download>Export User Data</a>
-        </Button>
+        <span className='export-button'>
+          <Button bsStyle='primary'>
+            <a id='app' href={this.state.appPath} download>Export App Data</a>
+          </Button>
+        </span>
+        <span className='export-button'>
+          <Button bsStyle='primary' >
+            <a id='user' href={this.state.userPath} download>Export User Data</a>
+          </Button>
+        </span>
         
         <span className="pull-right logout">
           <Button bsStyle='danger'>

@@ -1,9 +1,9 @@
-#app, #user {
+.export-button {
     margin-left: 1px;
-    margin-right: 20px
+    margin-right: 20px;
 }
 
-#user {
+a {
     color: white !important;
 }
 
