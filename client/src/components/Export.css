@@ -1,6 +1,11 @@
-#app {
-    margin-right: 20px
+#app-button {
+    margin-right: 20px;
 }
-a {
+
+#app {
+    color: white !important;
+}
+
+#user {
     color: white !important;
 }
