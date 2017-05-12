@@ -16,3 +16,10 @@
     display: inline;
     margin-left: 20px;
 }
+
+h4.plot-title {
+    font-size: 18px !important;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-style: italic;
+}

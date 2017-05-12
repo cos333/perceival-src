@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 function List(props) {
 
     return (
-        <li><a onClick={() => props.onClick(props.data)}>{props.data.name}</a></li>
+        <li><a className='dropdown-text' onClick={() => props.onClick(props.data)}>{props.data.name}</a></li>
     );
 }
 

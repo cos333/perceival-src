@@ -5,6 +5,32 @@ import React, {Component} from 'react';
 import Bar from './Bar';
 import DropdownTwo from './Dropdown';
 
+function prettifyResponse(x) {
+  if (x === 'numclicks') {
+    return 'Mean # of clicks'
+  } else if (x === 'centsspent') {
+    return 'Mean user spending (cents)'
+  } else if (x === 'secondsspent') {
+    return 'Mean time spent (seconds)'
+  } else {
+    return 'Unknown response: (' + x + ')';
+  }
+}
+
+export function prettifySegment(x) {
+  if (x === 'age') {
+    return 'age (years)'
+  } else if (x === 'country') {
+    return 'country'
+  } else if (x === 'gender') {
+    return 'gender'
+  } else if (x === 'language') {
+    return 'language'
+  } else {
+    return 'unknown segment: (' + x + ')';
+  }
+}
+
 class Barchart extends Component {
   constructor(props) {
     super(props);
@@ -88,24 +114,24 @@ class Barchart extends Component {
   }
 
   render() {
-    return (<div className = 'Chart' id="Barchart">
-            <DropdownTwo onClick =
-             {
-               (key) => this.handleClick(key)
-             } response =
-             {
-               this.state.response
-             } segment =
-             {
-               this.state.segment
-             } hasSegment =
-             {
-               true
-             } title = 'Bar Plot' />
-            <Bar ref = 'bar' width = '500px' height = '500px' dataset = {
-              this.state.dataset
-            } />
-      </div>);
+    return (
+      <div>
+        <div className = 'Chart' id="Barchart">
+          <DropdownTwo 
+            onClick = { (key) => this.handleClick(key) } 
+            response = { this.state.response }
+            segment = { this.state.segment }
+            hasSegment = { true }
+            title = 'Bar Plot' />
+          <h4 className='text-center text-semibold plot-title'>
+            {prettifyResponse(this.state.currentResponse)} vs. {prettifySegment(this.state.currentSegment)}
+          </h4>
+          <Bar ref = 'bar' width = '500px' height = '500px' dataset = {
+            this.state.dataset
+          } />
+        </div>
+      </div>
+      );
   }
 }
 

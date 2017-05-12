@@ -101,8 +101,10 @@ class Bar extends React.Component {
         });
   }
   render() {
-    return (<div ref='bar' className='d3-bar'>
-    </div>);
+    return (
+      <div ref='bar' className='d3-bar'>
+      </div>
+      );
   }
 }
 

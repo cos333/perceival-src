@@ -2,16 +2,15 @@ import './Dropdown.css';
 import React, { Component } from 'react';
 
 function List(props) {
-
     return (
-        <li><a onClick={() => props.onClick(props.data)}>{props.data.name}</a></li>
+        <li><a className='dropdown-text' onClick={() => props.onClick(props.data)}>{props.data.name}</a></li>
     );
 }
 
 class Dropdown extends Component {
     renderResponse(i) {
         const response = this.props.response;
-        return <List onClick={() => this.props.onClick(response[i].key)} data={response[i]} />;
+        return <List onClick={() => this.props.onClick(response[i].key)} data={response[i]} />
     }
 
     renderSegment(i) {
