@@ -21,3 +21,7 @@ h4 {
     font-size: 28px;
     vertical-align: middle;
 }
+
+.dropdown-text {
+    color: black !important;
+}

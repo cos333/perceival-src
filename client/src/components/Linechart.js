@@ -3,6 +3,30 @@ import React, {Component} from 'react';
 import DropdownThree from './DropdownThree';
 import Line from './Line';
 
+import {prettifySegment} from './Barchart';
+
+export function prettifyResponse(x, display) {
+  if (display == 'average') {
+    var qualifier = 'Mean';
+  } else if (display == 'sum') {
+    var qualifier = 'Total';
+  } else {
+    var qualifier = 'Unknown qualifier (' + display + ')'
+  }
+
+  if (x === 'numclicks') {
+    var latterText = '# of clicks'
+  } else if (x === 'centsspent') {
+    var latterText = 'user spending (cents)'
+  } else if (x === 'secondsspent') {
+    var latterText = 'time spent (seconds)'
+  } else {
+    var latterText = 'unknown response: (' + x + ')';
+  }
+
+  return qualifier + ' ' + latterText
+}
+
 class Linechart extends Component {
   constructor(props) {
     super(props);
@@ -114,6 +138,11 @@ class Linechart extends Component {
       this.state.segment} display={
       this.state.display} title='Timeseries' hasSegment={
       true} />
+      
+      <h4 className='text-center text-semibold plot-title'>
+        {prettifyResponse(this.state.currentResponse, this.state.currentDisplay)} vs. {prettifySegment(this.state.currentSegment)}
+      </h4>
+
       <Line ref='linechart' response={this.state.response} segment={this.state.segment} display={this.state.display} dataset={this.state.dataset} />
     </div>);
   }

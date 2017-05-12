@@ -5,6 +5,21 @@ import React, {Component} from 'react';
 import DropdownOne from './DropdownOne';
 import Pie from './Pie';
 
+
+function prettifySegment(x) {
+  if (x === 'age') {
+    return 'Age (years)'
+  } else if (x === 'country') {
+    return 'Country'
+  } else if (x === 'gender') {
+    return 'Gender'
+  } else if (x === 'language') {
+    return 'Language'
+  } else {
+    return 'Unknown segment: (' + x + ')';
+  }
+}
+
 class Piechart extends Component {
   constructor(props) {
     super(props);
@@ -88,6 +103,8 @@ class Piechart extends Component {
   }
 
   render() {
+    console.log(prettifySegment(this.state.currentSegment));
+
     return (<div className = 'Chart'>
             <DropdownOne onClick =
              {
@@ -96,9 +113,15 @@ class Piechart extends Component {
              {
                this.state.segment
              } title = 'Pie Chart' />
-            <Pie ref = 'pie' width = '500px' height = '500px' dataset = {
-              this.state.dataset
-            } / >
+            <h4 className='text-center text-semibold plot-title'>
+              {prettifySegment(this.state.currentSegment)}
+            </h4>
+
+            <div className='pie'>
+              <Pie ref = 'pie' width = '500px' height = '500px' dataset = {
+                this.state.dataset
+              } / >
+            </div>
         </div>);
   }
 }
