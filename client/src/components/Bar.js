@@ -14,7 +14,6 @@ class Bar extends React.Component {
   } 
 
   handleResize = () => { 
-    d3.select("#d3-bar").remove(); 
     this.createBars(); 
   } 
 
