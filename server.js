@@ -34,20 +34,20 @@ app.use(express.static('client/build'));
 
 // app.use(jwtCheck);
 
-var url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
-var bodydata =  {
-      'plot': 'bar',
-      'response': 'SecondsSpent',
-      'segment': 'age'
-  }
+// var url = 'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
+// var bodydata =  {
+//       'plot': 'bar',
+//       'response': 'SecondsSpent',
+//       'segment': 'age'
+//   }
 
-request.post({
-  url: url,
-  form: bodydata
-}, function (error, response, body) {
-  // console.log(response['headers']);
-  console.log(body);
-  });
+// request.post({
+//   url: url,
+//   form: bodydata
+// }, function (error, response, body) {
+//   // console.log(response['headers']);
+//   console.log(body);
+//   });
 
 
 app.get('/perceival', function (req, res) {

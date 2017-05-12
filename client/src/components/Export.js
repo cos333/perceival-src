@@ -1,14 +1,14 @@
 import './Export.css';
 
-import React, { Component } from 'react';
-import { Button, ButtonToolbar } from 'react-bootstrap';
+import React, {Component} from 'react';
+import {Button, ButtonToolbar} from 'react-bootstrap';
 import DownloadLink from 'react-download-link'
 
 
 class Export extends Component {
   constructor() {
     super();
-    this.state = { appPath: '', userPath: '' }
+    this.state = {appPath: '', userPath: ''}
   }
 
   componentDidMount() {
@@ -19,27 +19,27 @@ class Export extends Component {
   fetchCSV(dataType) {
     var typeIsApp = dataType == 'app' ? true : false;
     var url =
-      'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getCSV';
-    var data = { 'app': 'Simulated', 'data_type': dataType };
+        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getCSV';
+    var data = {'app': 'Simulated', 'data_type': dataType};
     const searchParams = Object.keys(data)
-      .map((key) => {
-        return encodeURIComponent(key) + '=' +
-          encodeURIComponent(data[key]);
-      })
-      .join('&');
-    fetch(url, { method: 'POST', body: searchParams })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        if (typeIsApp)
-          this.setState({ appPath: data.url });
-        else
-          this.setState({ userPath: data.url });
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+                             .map((key) => {
+                               return encodeURIComponent(key) + '=' +
+                                   encodeURIComponent(data[key]);
+                             })
+                             .join('&');
+    fetch(url, {method: 'POST', body: searchParams})
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (typeIsApp)
+            this.setState({appPath: data.url});
+          else
+            this.setState({userPath: data.url});
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
 
   };
 
