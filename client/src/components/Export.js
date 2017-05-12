@@ -52,8 +52,15 @@ class Export extends Component {
         <Button bsStyle='primary' id='user'>
           <a href={this.state.userPath} download>Export User Data</a>
         </Button>
+        
+        <span className="pull-right logout">
+          <Button bsStyle='danger'>
+            {/*implement session clear on click https://auth0.com/docs/videos/session-and-cookies*/}
+            <a href={'https://sheonhan.auth0.com/v2/logout?returnTo=http%3A%2F%2Fperceival.tech/demo'}>Logout</a>
+          </Button>
+        </span>
       </div>);
-  }
+       }
 }
 
 export default Export;
