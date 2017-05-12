@@ -107,14 +107,14 @@ class Linechart extends Component {
   }
 
   render() {
-    return (<div className='Chart'>
+    return (<div className='Chart' id="Linechart">
       <DropdownThree onClick={
       (key) => this.handleClick(key)} response={
       this.state.response} segment={
       this.state.segment} display={
       this.state.display} title='Timeseries' hasSegment={
       true} />
-      <Line ref='linechart' width="500px" height="500px" response={this.state.response} segment={this.state.segment} display={this.state.display} dataset={this.state.dataset} />
+      <Line ref='linechart' response={this.state.response} segment={this.state.segment} display={this.state.display} dataset={this.state.dataset} />
     </div>);
   }
 }

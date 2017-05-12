@@ -12,10 +12,23 @@ class Line extends Component {
     this.createLines = this.createLines.bind(this);
   }
 
+  componentDidMount() { 
+    window.addEventListener('resize', this.handleResize); 
+  } 
+
+  componentWillUnmount() { 
+    window.removeEventListener('resize', this.handleResize); 
+  } 
+
+  handleResize = () => { 
+    d3.select("#d3-line").remove(); 
+    this.createLines(); 
+  } 
+
   createLines() {
     var lines = d3.select('#d3-line');
     lines.remove();
-    var w = 940;
+    var w = document.getElementById('Linechart').offsetWidth;
     var h = 300;
     var svg = d3.select(this.refs.line)
                   .append('svg')
