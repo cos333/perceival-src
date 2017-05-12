@@ -1,4 +1,0 @@
-Status code: 200
-"labels": ["brazil", "canada"], "stdevs": [1.0030301889098718, 0.5812610263110876], "means": [0.8632, 0.2884]
-
-{'x-amzn-RequestId': 'ad4ad168-3402-11e7-b140-15347dfb4763', 'Content-Length': '111', 'Via': '1.1 f564d0c1e4568b2b822f986a309f4114.cloudfront.net (CloudFront)', 'X-Cache': 'Miss from cloudfront', 'X-Amzn-Trace-Id': 'sampled=0;root=1-59108e18-dc6d64c8c1297a6821129f0a', 'Connection': 'keep-alive', 'X-Amz-Cf-Id': 's65byGuP5XG-7OYu-v1BYgJS31epKEeyJJDUYtqFp6U1E8ZWx_gYng==', 'Access-Control-Allow-Credentials': 'true', 'Date': 'Mon, 08 May 2017 15:26:16 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'}

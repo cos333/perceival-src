@@ -2,7 +2,6 @@ import './Export.css';
 
 import React, {Component} from 'react';
 import {Button, ButtonToolbar} from 'react-bootstrap';
-import DownloadLink from 'react-download-link'
 
 
 class Export extends Component {
