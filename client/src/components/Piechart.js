@@ -8,16 +8,18 @@ import Pie from './Pie';
 
 function prettifySegment(x) {
   if (x === 'age') {
-    return 'Age (years)'
+    var latterText = 'age (years)'
   } else if (x === 'country') {
-    return 'Country'
+    var latterText = 'country'
   } else if (x === 'gender') {
-    return 'Gender'
+    var latterText = 'gender'
   } else if (x === 'language') {
-    return 'Language'
+    var latterText = 'language'
   } else {
-    return 'Unknown segment: (' + x + ')';
+    var latterText = 'unknown segment: (' + x + ')';
   }
+
+  return 'Breakdown of user ' + latterText;
 }
 
 class Piechart extends Component {
