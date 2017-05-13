@@ -27,10 +27,10 @@ class DropdownOne extends Component {
     render() {
         return (
             <div className='options'>
-                <div className='col-md-5'>
+                <div className='col-xs-4 col-md-5'>
                     <h4>{this.props.title}</h4>
                 </div>
-                    <div className="col-md-3">
+                    <div className="col-xs-4 col-md-3">
                         <div className='dropdown' id='segment'>
                             <button className='btn btn-default btn-options dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
                                 Segment
