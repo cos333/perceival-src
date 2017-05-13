@@ -1,12 +1,13 @@
 import './Export.css';
-
-import React, {Component} from 'react';
+import React, { PropTypes as T } from 'react';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 
-class Export extends Component {
-  constructor() {
-    super();
-    this.state = {appPath: '', userPath: ''}
+class Export extends React.Component {
+  static contextTypes = { router: T.object };
+  
+  constructor(props, context) {
+    super(props, context);
+    this.state = { appPath: '', userPath: '' }
   }
 
   componentDidMount() {
@@ -38,15 +39,20 @@ class Export extends Component {
         .catch((err) => {
           console.log(err.message);
         });
-
   };
+
+  logout() {
+    this.props.auth.logout();
+    this.context.router.push('/login');
+  }
 
   render() {
     return (
       <div>
         <span className='export-button'>
           <Button bsStyle='primary'>
-            <a id='app' href={this.state.appPath} download>Export App Data</a>
+            <a id='app' href={
+      this.state.appPath} download>Export App Data</a>
           </Button>
         </span>
         <span className='export-button'>
@@ -55,10 +61,9 @@ class Export extends Component {
           </Button>
         </span>
         
-        <span className="pull-right logout">
-          <Button bsStyle='danger'>
-            {/*implement session clear on click https://auth0.com/docs/videos/session-and-cookies*/}
-            <a href={'https://sheonhan.auth0.com/v2/logout?returnTo=http%3A%2F%2Fperceival.tech/demo'}>Logout</a>
+        <span className='pull-right logout'>
+          <Button bsStyle='danger' onClick={this.logout.bind(this)}>
+            Logout
           </Button>
         </span>
       </div>);

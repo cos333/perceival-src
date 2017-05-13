@@ -10,7 +10,9 @@ import Piechart from './components/Piechart';
 // import Grid from './components/Grid';
 
 class Perceival extends Component {
+    
   render() {
+      const { auth } = this.props;
         return (
             <div>
                 <div id='row1' className='row'> 
@@ -40,7 +42,7 @@ class Perceival extends Component {
                 </div>
                 <div id='row2' className='row'> 
                     <div className='col-md-12'>
-                        <Export /> 
+                        <Export auth={this.props.auth}/> 
                     </div> 
                 </div>
             </div>
