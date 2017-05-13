@@ -5,21 +5,6 @@ import * as d3 from 'd3';
 import React from 'react';
 
 class Bar extends React.Component {
-<<<<<<< HEAD:client/src/components/Bar.js
-    componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.createBars();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = () => {
-    d3.select("#d3-bar").remove();
-    this.createBars();
-  }
-=======
   componentDidMount() { 
     window.addEventListener('resize', this.handleResize); 
   } 
@@ -31,8 +16,6 @@ class Bar extends React.Component {
   handleResize = () => { 
     this.createBars(); 
   } 
-
->>>>>>> serverless:src/components/Bar.js
   createBars() {
     var data = this.props.dataset;
     var length = Object.keys(data).length;

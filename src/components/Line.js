@@ -10,22 +10,6 @@ class Line extends Component {
     super();
     this.createLines = this.createLines.bind(this);
   }
-
-<<<<<<< HEAD:client/src/components/Line.js
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.createLines();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = () => {
-    d3.select("#d3-line").remove();
-    this.createLines();
-  }
-=======
   componentDidMount() { 
     window.addEventListener('resize', this.handleResize); 
   } 
@@ -37,7 +21,6 @@ class Line extends Component {
   handleResize = () => { 
     this.createLines(); 
   } 
->>>>>>> serverless:src/components/Line.js
 
   createLines() {
     var lines = d3.select('#d3-line');

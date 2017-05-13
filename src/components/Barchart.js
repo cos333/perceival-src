@@ -114,12 +114,6 @@ class Barchart extends Component {
   }
 
   render() {
-<<<<<<< HEAD:client/src/components/Barchart.js
-    return (<div className='Chart'>
-      <DropdownTwo onClick={(key) => this.handleClick(key)} response={this.state.response} segment={this.state.segment} hasSegment={true} title='Bar Plot' />
-      <Bar ref='bar' width='500px' height='500px' dataset={this.state.dataset} />
-    </div>);
-=======
     return (
       <div>
         <div className = 'Chart' id="Barchart">
@@ -138,7 +132,6 @@ class Barchart extends Component {
         </div>
       </div>
       );
->>>>>>> serverless:src/components/Barchart.js
   }
 }
 
