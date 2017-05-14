@@ -139,12 +139,10 @@ class Linechart extends Component {
       this.state.segment} display={
       this.state.display} title='Timeseries' hasSegment={
       true} />
-      
       <h4 className='text-center text-semibold plot-title'>
         {prettifyResponse(this.state.currentResponse, this.state.currentDisplay)} vs. {prettifySegment(this.state.currentSegment)}
       </h4>
-
-      <Line ref='linechart' response={this.state.response} segment={this.state.segment} display={this.state.display} dataset={this.state.dataset} />
+      <Line ref='linechart' response={this.state.currentResponse} segment={this.state.currentSegment} display={this.state.display} dataset={this.state.dataset} />
     </div>);
   }
 }
