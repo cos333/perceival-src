@@ -80,7 +80,96 @@
 
         <div class="content" id="main">
             <div class="container-fluid">
-                <h3>Coming soon!</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card about">
+                            <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                            <div class="text_cell_render border-box-sizing rendered_html">
+                            <p>Perceival makes it easy to generate clean and organized data which can be immediately used for further analysis. Here, we show how we can perform machine learning for predictive analytics using the <code>scikit-learn</code> Python library on data generated using Perceival.</p>
+
+                            </div>
+                            </div>
+                            </div>
+                            <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+                            <div class="prompt input_prompt">In&nbsp;[1]:</div>
+                            <div class="inner_cell">
+                                <div class="input_area">
+                            <div class=" highlight hl-ipython2"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">app_data_path</span> <span class="o">=</span> <span class="s1">&#39;appdata.csv&#39;</span>
+<span class="n">user_data_path</span> <span class="o">=</span> <span class="s1">&#39;userdata.csv&#39;</span>
+
+<span class="n">app_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">app_data_path</span><span class="p">)</span>
+<span class="n">user_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">user_data_path</span><span class="p">)</span></pre></div>
+                            <br>
+                            </div>
+                            </div>
+                            </div>
+
+                            </div>
+                            <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                            <div class="text_cell_render border-box-sizing rendered_html">
+                            <h4 id="Classification:-spends-more-or-less-than-10-cents?">Classification: will a user spend more or less than 10 cents?</h4>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+                            <div class="prompt input_prompt">In&nbsp;[2]:</div>
+                            <div class="inner_cell">
+                                <div class="input_area">
+                            <div class=" highlight hl-ipython2"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">app_data_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;UserID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;CentsSpent&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">user_data_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;UserID&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">250</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">250</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="mi">250</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">250</span><span class="p">:]</span>
+
+<span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># predict on some testing data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Accuracy of model is {:.4f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span></pre></div>
+                            <br>
+                            </div>
+                            </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                            <div class="output">
+
+
+                            <div class="output_area">
+                            <div class="prompt"></div>
+
+                            <div class="output_subarea output_stream output_stdout output_text">
+                            <pre><em>Accuracy of model is 0.9840</em></pre>
+                            </div>
+                            </div>
+
+                            </div>
+                            </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
 
