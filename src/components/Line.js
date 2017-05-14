@@ -10,6 +10,7 @@ class Line extends Component {
     super();
     this.createLines = this.createLines.bind(this);
   }
+
   componentDidMount() { 
     window.addEventListener('resize', this.handleResize); 
   } 

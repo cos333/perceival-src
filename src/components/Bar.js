@@ -16,8 +16,11 @@ class Bar extends React.Component {
   handleResize = () => { 
     this.createBars(); 
   } 
+
   createBars() {
-    var data = this.props.dataset;
+    var bars = d3.select('#d3-bar');
+    bars.remove();
+        var data = this.props.dataset;
     var length = Object.keys(data).length;
     var result = [];
     for (var i = 0; i < length; i++) {

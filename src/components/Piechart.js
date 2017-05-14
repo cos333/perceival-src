@@ -2,36 +2,27 @@ import './Chart.css';
 
 import React, {Component} from 'react';
 
-import Bar from './Bar';
-import DropdownTwo from './Dropdown';
+import DropdownOne from './DropdownOne';
+import Pie from './Pie';
 
-function prettifyResponse(x) {
-  if (x === 'numclicks') {
-    return 'Mean # of clicks'
-  } else if (x === 'centsspent') {
-    return 'Mean user spending (cents)'
-  } else if (x === 'secondsspent') {
-    return 'Mean time spent (seconds)'
-  } else {
-    return 'Unknown response: (' + x + ')';
-  }
-}
 
-export function prettifySegment(x) {
+function prettifySegment(x) {
   if (x === 'age') {
-    return 'age (years)'
+    var latterText = 'age (years)'
   } else if (x === 'country') {
-    return 'country'
+    var latterText = 'country'
   } else if (x === 'gender') {
-    return 'gender'
+    var latterText = 'gender'
   } else if (x === 'language') {
-    return 'language'
+    var latterText = 'language'
   } else {
-    return 'unknown segment: (' + x + ')';
+    var latterText = 'unknown segment: (' + x + ')';
   }
+
+  return 'Breakdown of user ' + latterText;
 }
 
-class Barchart extends Component {
+class Piechart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,8 +39,6 @@ class Barchart extends Component {
       currentSegment: 'age',
       dataset: []
     };
-
-    this.updateResponse = this.updateResponse.bind(this);
     this.updateSegment = this.updateSegment.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -69,14 +58,7 @@ class Barchart extends Component {
     } else if (segments.includes(key)) {
       this.updateSegment(key);
     } else {
-      console.log('No such key');
     }
-  }
-
-
-  updateResponse(response) {
-    console.log('Update response');
-    this.fetchData(response, this.state.currentSegment);
   }
 
   updateSegment(segment) {
@@ -85,7 +67,7 @@ class Barchart extends Component {
   }
 
   fetchData(response, segment) {
-    var data = {'plot': 'bar', 'response': response, 'segment': segment};
+    var data = {'plot': 'pie', 'response': response, 'segment': segment};
     var url =
         'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 
@@ -95,44 +77,55 @@ class Barchart extends Component {
                                    encodeURIComponent(data[key]);
                              })
                              .join('&');
-
     fetch(url, {method: 'POST', body: searchParams})
         .then((res) => {
           return res.json();
         })
         .then((data) => {
           this.setState({
-            dataset: data,
+            dataset: this.transformData(data),
             currentResponse: response,
             currentSegment: segment
           });
-          this.refs.bar.createBars();
+          this.refs.pie.createPie();
         })
         .catch((err) => {
           console.log(err.message);
         });
   }
 
+  transformData(data) {
+    var length = data.labels.length;
+    var dataset = [];
+    for (var i = 0; i < length; i++) {
+      var obj = {labels: data.labels[i], props: data.props[i]};
+      dataset.push(obj)
+    }
+    return dataset;
+  }
+
   render() {
-    return (
-      <div>
-        <div className = 'Chart' id="Barchart">
-          <DropdownTwo 
-            onClick = { (key) => this.handleClick(key) } 
-            response = { this.state.response }
-            segment = { this.state.segment }
-            hasSegment = { true }
-            title = 'Bar Plot' />
-          <h4 className='text-center text-semibold plot-title'>
-            {prettifyResponse(this.state.currentResponse)} vs. {prettifySegment(this.state.currentSegment)}
-          </h4>
-          <Bar ref = 'bar' width = '500px' height = '500px' dataset = {
-            this.state.dataset
-          } />
-        </div>
-      </div>
-      );
+    console.log(prettifySegment(this.state.currentSegment));
+
+    return (<div className = 'Chart'>
+            <DropdownOne onClick =
+             {
+               (key) => this.handleClick(key)
+             } segment =
+             {
+               this.state.segment
+             } title = 'Pie Chart' />
+            <h4 className='text-center text-semibold plot-title'>
+              {prettifySegment(this.state.currentSegment)}
+            </h4>
+
+            <div className='pie'>
+              <Pie ref = 'pie' width = '500px' height = '500px' dataset = {
+                this.state.dataset
+              } / >
+            </div>
+        </div>);
   }
 }
 
-export default Barchart;
+export default Piechart;
