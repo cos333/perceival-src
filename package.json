@@ -12,14 +12,12 @@
     "react-d3-components": "^0.6.6",
     "react-dom": "^15.4.2",
     "react-particles-js": "^1.5.0",
+    "react-scripts": "0.9.5",
     "react-router": "^3.0.0",
     "react-typist": "^1.1.0"
   },
-  "devDependencies": {
-    "react-scripts": "0.9.5"
-  },
   "scripts": {
-    "start": "PORT=3333 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

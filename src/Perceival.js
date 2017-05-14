@@ -7,8 +7,6 @@ import Export from './components/Export';
 import Linechart from './components/Linechart';
 import Piechart from './components/Piechart';
 
-// import Grid from './components/Grid';
-
 class Perceival extends Component {
     
   render() {
