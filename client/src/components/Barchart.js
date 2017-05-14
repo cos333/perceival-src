@@ -124,7 +124,7 @@ class Barchart extends Component {
   render() {
     return (
       <div>
-        <div className = 'Chart' id="Barchart">
+        <div className='Chart' id="Barchart">
           <DropdownTwo 
             onClick={ (key) => this.handleClick(key) } 
             response={ this.state.response }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './Chart.css';
 import React, {Component} from 'react';
 import DropdownThree from './DropdownThree';

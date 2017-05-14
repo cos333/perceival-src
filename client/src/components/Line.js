@@ -49,7 +49,7 @@ class Line extends Component {
     var yTwo = dataset[1].y;
     let yArray;
 
-    if (dataset.length == 3) {
+    if (dataset.length === 3) {
       var yThree = dataset[2].y;
       yArray = yOne.concat(yTwo).concat(yThree);
     } 

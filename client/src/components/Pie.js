@@ -13,7 +13,7 @@ class Pie extends Component {
   }
 
   componentDidMount() {
-    var arcs = this.createArcs();
+    this.createArcs();
     this.createPie();
   }
 
