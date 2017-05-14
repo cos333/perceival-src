@@ -1,29 +1,23 @@
 {
-  "name": "perceival-server",
+  "name": "perceival-dev",
   "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jisungk/perceival-dev.git",
+  "author": "Sheon Han <sheon.han@gmail.com> (http://sheon.be/)",
+  "license": "MIT",
   "engines": {
-    "node": "6.9.x"
+    "node": "6.9.1"
+  },
+  "dependencies": {
+    "concurrently": "^3.4.0",
+    "rimraf": "^2.6.1"
   },
   "scripts": {
-    "start": "node server",
-    "dev": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 npm start\"",
-    "heroku-postbuild": "cd client/ && npm install && npm run build"
-  },
-  "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
-  ],
-  "dependencies": {
-    "body-parser": "^1.17.1",
-    "concurrently": "^3.4.0",
-    "express": "^4.14.1"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "create-react-app",
-    "react"
-  ],
-  "license": "MIT",
-  "devDependencies": {}
+    "build": "concurrently \"cd client && yarn build\" \"cd server && yarn build\"",
+    "clean": "concurrently \"rimraf node_modules\" \"cd client && rimraf node_modules build\" \"cd server && rimraf node_modules build\"",
+    "heroku-postbuild": "yarn build",
+    "install": "(cd client && yarn) && (cd server && yarn)",
+    "start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=3001 yarn start\"",
+    "start:prod": "cd server && yarn start:prod"
+  }
 }
