@@ -123,7 +123,7 @@ class Line extends Component {
         .call(d3.axisLeft(y))
         .append('text')
         .attr('transform', 'rotate(-90)')
-        .attr('y', -40)
+        .attr('y', -50)
         .attr('dy', '0.71em')
         .attr('fill', '#000')
         .text(yAxisLabel);
@@ -159,6 +159,10 @@ class Line extends Component {
                       return z(d.label);
                     });
     var totalLength = linesChart.node().getTotalLength();
+
+    svg.append("text") // seems to counteract bug 
+      .attr("transform", "translate(" + w + "," + dataset.y[length-1] + ")") 
+      .text("");
 
     linesChart.attr('stroke-dasharray', totalLength + ' ' + totalLength)
         .attr('stroke-dashoffset', totalLength)
