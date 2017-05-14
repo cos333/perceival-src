@@ -10,7 +10,6 @@ import Piechart from './components/Piechart';
 class Perceival extends Component {
     
   render() {
-      const { auth } = this.props;
         return (
             <div>
                 <div id='row1' className='row'> 

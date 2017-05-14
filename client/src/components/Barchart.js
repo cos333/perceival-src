@@ -85,32 +85,40 @@ class Barchart extends Component {
   }
 
   fetchData(response, segment) {
-    var data = {'plot': 'bar', 'response': response, 'segment': segment};
+    var data = { 'plot': 'bar', 'response': response, 'segment': segment };
     var url =
-        'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
+      'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getPlotData'
 
     const searchParams = Object.keys(data)
-                             .map((key) => {
-                               return encodeURIComponent(key) + '=' +
-                                   encodeURIComponent(data[key]);
-                             })
-                             .join('&');
+      .map((key) => {
+        return encodeURIComponent(key) + '=' +
+          encodeURIComponent(data[key]);
+      })
+      .join('&');
 
-    fetch(url, {method: 'POST', body: searchParams})
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          this.setState({
-            dataset: data,
-            currentResponse: response,
-            currentSegment: segment
-          });
-          this.refs.bar.createBars();
-        })
-        .catch((err) => {
-          console.log(err.message);
+    fetch(url, { method: 'POST', body: searchParams })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          dataset: data,
+          currentResponse: response,
+          currentSegment: segment
         });
+        this.refs.bar.createBars();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    
+    fetch('http://localhost:3001/api')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+      });
   }
 
   render() {
@@ -118,17 +126,15 @@ class Barchart extends Component {
       <div>
         <div className = 'Chart' id="Barchart">
           <DropdownTwo 
-            onClick = { (key) => this.handleClick(key) } 
-            response = { this.state.response }
-            segment = { this.state.segment }
-            hasSegment = { true }
-            title = 'Bar Plot' />
+            onClick={ (key) => this.handleClick(key) } 
+            response={ this.state.response }
+            segment={ this.state.segment }
+            hasSegment={ true }
+            title='Bar Plot' />
           <h4 className='text-center text-semibold plot-title'>
             {prettifyResponse(this.state.currentResponse)} vs. {prettifySegment(this.state.currentSegment)}
           </h4>
-          <Bar ref = 'bar' width = '500px' height = '500px' dataset = {
-            this.state.dataset
-          } />
+          <Bar ref='bar' width='500px' height='500px' dataset={this.state.dataset} />
         </div>
       </div>
       );

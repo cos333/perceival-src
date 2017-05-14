@@ -105,8 +105,6 @@ class Piechart extends Component {
   }
 
   render() {
-    console.log(prettifySegment(this.state.currentSegment));
-
     return (<div className = 'Chart'>
             <DropdownOne onClick =
              {

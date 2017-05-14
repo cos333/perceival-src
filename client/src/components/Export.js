@@ -1,6 +1,6 @@
 import './Export.css';
 import React, { PropTypes as T } from 'react';
-import {Button, ButtonToolbar} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 class Export extends React.Component {
   static contextTypes = { router: T.object };
@@ -16,7 +16,7 @@ class Export extends React.Component {
   };
 
   fetchCSV(dataType) {
-    var typeIsApp = dataType == 'app' ? true : false;
+    var typeIsApp = dataType === 'app' ? true : false;
     var url =
         'https://dil2yon0pd.execute-api.us-west-2.amazonaws.com/prod/getCSV';
     var data = {'app': 'Simulated', 'data_type': dataType};

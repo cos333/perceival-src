@@ -5,7 +5,6 @@ import Perceival from '../Perceival'
 import AuthService from '../utils/AuthService'
 
 import Container from './Main/Container'
-import Home from './Main/Home/Home'
 import Login from './Main/Login/Login'
 
 const auth =
@@ -17,7 +16,6 @@ const requireAuth =
       if (!auth.loggedIn()) {
         replace({pathname: '/login'})
       }
-      else console.log("Logged In");  
     }
 
 export const makeMainRoutes = () => {

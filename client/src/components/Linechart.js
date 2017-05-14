@@ -6,9 +6,9 @@ import Line from './Line';
 import {prettifySegment} from './Barchart';
 
 export function prettifyResponse(x, display) {
-  if (display == 'average') {
+  if (display === 'average') {
     var qualifier = 'Mean';
-  } else if (display == 'sum') {
+  } else if (display === 'sum') {
     var qualifier = 'Total';
   } else {
     var qualifier = 'Unknown qualifier (' + display + ')'

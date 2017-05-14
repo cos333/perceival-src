@@ -1,6 +1,5 @@
 import React from 'react'
 import {ButtonToolbar, Button} from 'react-bootstrap'
-import AuthService from '../../../utils/AuthService'
 import './styles.module.css'
 
 import Typist from 'react-typist'
