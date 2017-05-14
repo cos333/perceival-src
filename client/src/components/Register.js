@@ -1,7 +1,9 @@
 /* eslint-disable */
 import './Register.css'
 import React, { Component } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import {
+    Button, Modal, Form, FormGroup, ControlLabel, FormControl, Checkbox, Col
+} from 'react-bootstrap';
 
 class Register extends React.Component {
     constructor(props, context) {
@@ -28,7 +30,23 @@ class Register extends React.Component {
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Form to be filled out</h4>
+                    <Form method="POST" action="http://formspree.io/sheon.han@gmail.com">
+                        <FormGroup controlId="formHorizontalEmail">
+                            <Col sm={10}>
+                                <FormControl type="email" placeholder="Your email" />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup controlId="formHorizontalPassword">
+                            <Col sm={10}>
+                                <FormControl type="message" placeholder="Your message" />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Col smOffset={2} sm={10}>
+                                <Button type="submit">Submit</Button>
+                            </Col>
+                        </FormGroup>
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.close}>Close</Button>
