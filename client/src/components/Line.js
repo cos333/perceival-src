@@ -5,6 +5,36 @@ import './Line.css';
 import * as d3 from 'd3';
 import React, {Component} from 'react';
 
+  export function prettifyYAxis(y) {
+    let latterText;
+    if (y === 'numclicks') {
+      latterText = 'Number of clicks'
+    } else if (y === 'centsspent') {
+      latterText = 'Cents Spent'
+    } else if (y === 'secondsspent') {
+      latterText = 'Seconds Spent'
+    } else {
+      latterText = 'unknown response: (' + y + ')';
+    }
+    return latterText
+  }
+
+  export function prettifyXAxis(x) {
+    let latterText;
+    if (x === 'age') {
+      latterText = 'Age'
+    } else if (x === 'country') {
+      latterText = 'Country'
+    } else if (x === 'gender') {
+      latterText = 'Gender'
+    } else if (x === 'language') {
+      latterText = 'Language'
+    } else {
+      latterText = 'unknown response: (' + x + ')';
+    }
+    return latterText
+  }
+
 class Line extends Component {
   constructor() {
     super();
@@ -27,13 +57,13 @@ class Line extends Component {
     var lines = d3.select('#d3-line');
     lines.remove();
     var w = document.getElementById('Linechart').offsetWidth;
-    var h = 300;
+    var h = 350;
     var svg = d3.select(this.refs.line)
                   .append('svg')
                   .attr('width', w)
                   .attr('height', h)
                   .attr('id', 'd3-line'),
-        margin = {top: 20, right: 80, bottom: 30, left: 50},
+        margin = {top: 20, right: 50, bottom: 50, left: 60},
         width = w - margin.left - margin.right,
         height = h - margin.top - margin.bottom,
         g = svg.append('g').attr(
@@ -86,19 +116,25 @@ class Line extends Component {
         .attr('transform', 'translate(0,' + height + ')')
         .call(d3.axisBottom(x));
 
-    var yAxisObject = this.props.response;
-    var yAxisLabel = yAxisObject[1].name;
-
     // add y axis label
+    var yAxisLabel = prettifyYAxis(this.props.response);
     g.append('g')
         .attr('class', 'axis axis--y')
         .call(d3.axisLeft(y))
         .append('text')
         .attr('transform', 'rotate(-90)')
-        .attr('y', 6)
+        .attr('y', -40)
         .attr('dy', '0.71em')
         .attr('fill', '#000')
         .text(yAxisLabel);
+
+    // add x axis label
+    var xAxisLabel = prettifyXAxis(this.props.segment);
+    svg.append("text")
+        .attr('class', 'axis axis--x')
+        .attr("transform", "translate(" + (w / 2) + " ," + (h - margin.bottom/3) + ")")
+        .style("text-anchor", "middle")
+        .text(xAxisLabel);
 
     var line = d3.line()
                    .curve(d3.curveBasis)
