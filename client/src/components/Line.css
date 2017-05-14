@@ -2,6 +2,10 @@
   display: none;
 }
 
+.axis--x {
+	font-size: 0.75em;
+}
+
 .line {
   fill: none;
   stroke: steelblue;
