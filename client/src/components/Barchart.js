@@ -126,9 +126,8 @@ class Barchart extends Component {
           <h4 className='text-center text-semibold plot-title'>
             {prettifyResponse(this.state.currentResponse)} vs. {prettifySegment(this.state.currentSegment)}
           </h4>
-          <Bar ref = 'bar' dataset = {
-            this.state.dataset
-          } />
+          <Bar ref = 'bar' dataset={this.state.dataset} 
+          response={this.state.currentResponse} segment={this.state.currentSegment}/>
         </div>
       </div>
       );
