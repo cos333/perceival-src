@@ -25,5 +25,8 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "index.js",
+  "repository": "git@github.com:jisungk/perceival-dev.git",
+  "author": "Sheon Han <sheon.han@gmail.com> (http://sheon.be/)"
 }
