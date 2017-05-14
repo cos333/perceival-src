@@ -212,9 +212,7 @@ lbd = {
 
             $(".sidebar-wrapper .dropdown .dropdown-menu > li > a").click(function(event) {
                 event.stopPropagation();
-
             });
-
             mobile_menu_initialized = true;
         } else {
             console.log('window with:' + $(window).width());

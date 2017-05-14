@@ -2,7 +2,7 @@
 
 import './Chart.css';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Bar from './Bar';
 import DropdownTwo from './Dropdown';
@@ -38,13 +38,13 @@ class Barchart extends Component {
     super(props);
     this.state = {
       response: [
-        {name: 'Number of Clicks', key: 'numclicks'},
-        {name: 'Cents Spent', key: 'centsspent'},
-        {name: 'Seconds Spent', key: 'secondsspent'}
+        { name: 'Number of Clicks', key: 'numclicks' },
+        { name: 'Cents Spent', key: 'centsspent' },
+        { name: 'Seconds Spent', key: 'secondsspent' }
       ],
       segment: [
-        {name: 'Age', key: 'age'}, {name: 'Country', key: 'country'},
-        {name: 'Gender', key: 'gender'}, {name: 'Language', key: 'language'}
+        { name: 'Age', key: 'age' }, { name: 'Country', key: 'country' },
+        { name: 'Gender', key: 'gender' }, { name: 'Language', key: 'language' }
       ],
       currentResponse: 'numclicks',
       currentSegment: 'age',
@@ -113,8 +113,9 @@ class Barchart extends Component {
       .catch((err) => {
         console.log(err.message);
       });
-    
-    fetch('http://localhost:3001/api')
+
+
+    fetch('/api')
       .then((res) => {
         return res.json();
       })
@@ -127,20 +128,20 @@ class Barchart extends Component {
     return (
       <div>
         <div className='Chart' id="Barchart">
-          <DropdownTwo 
-            onClick={ (key) => this.handleClick(key) } 
-            response={ this.state.response }
-            segment={ this.state.segment }
-            hasSegment={ true }
+          <DropdownTwo
+            onClick={(key) => this.handleClick(key)}
+            response={this.state.response}
+            segment={this.state.segment}
+            hasSegment={true}
             title='Bar Plot' />
           <h4 className='text-center text-semibold plot-title'>
             {prettifyResponse(this.state.currentResponse)} vs. {prettifySegment(this.state.currentSegment)}
           </h4>
-          <Bar ref = 'bar' dataset={this.state.dataset} 
-          response={this.state.currentResponse} segment={this.state.currentSegment}/>
+          <Bar ref='bar' dataset={this.state.dataset}
+            response={this.state.currentResponse} segment={this.state.currentSegment} />
         </div>
       </div>
-      );
+    );
   }
 }
 
