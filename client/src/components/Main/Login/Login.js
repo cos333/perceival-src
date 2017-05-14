@@ -6,8 +6,31 @@ import Typist from 'react-typist'
 import Particles from 'react-particles-js';
 
 export class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: '0', height: '0' };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.render = this.render.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   render() {
-    const { auth } = this.props
+    const { auth } = this.props;
+
+    var nParticles = Math.max(50, Math.round(this.state.width * 0.1));
 
     return (
       <div className="root">
@@ -24,15 +47,17 @@ export class Login extends React.Component {
               </ButtonToolbar>
             </div>
 
-            <div>
-              <div className="particles">
-                <Particles params={{particles: {
-                    number: {value: 100}, color: {value: "#9013FE"}, size: {value: 3}, 
-                    opacity: {value: 0.2}, line_linked: {color: "#9013FE", width: 1.2, opacity: 0.2}
-                  }}}
-                />
-              </div>
-            </div>
+            <div className="particles">
+              <Particles 
+                width={0.77 * this.state.width}
+                height={0.77 * this.state.height}
+                params={
+                  {particles: {
+                  number: {value: nParticles}, color: {value: "#9013FE"}, size: {value: 3}, 
+                  opacity: {value: 0.2}, line_linked: {color: "#9013FE", width: 1.2, opacity: 0.1}
+                }}}
+              />
+          </div>
           </div>
       </div>
     )
