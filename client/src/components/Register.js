@@ -5,13 +5,18 @@ import {
     Button, Modal, Form, FormGroup, ControlLabel, FormControl, Checkbox, Col
 } from 'react-bootstrap';
 
-class Register extends React.Component {
+class Register extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = { showModal: false,
             profile: props.auth.getProfile() }
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
+    }
+
+    componentDidMount() {
+        console.log(this.state.profile);
+
     }
 
     close() {
@@ -46,6 +51,9 @@ class Register extends React.Component {
                                 <FormControl type="text" bsSize="small" name="app-description" placeholder="Please describe your app in < 30 words." />
                             </FormGroup>
                             <FormGroup>
+                                <FormControl type="hidden" bsSize="small" name="app-email" value={this.state.profile.email}/>
+                            </FormGroup>
+                            <FormGroup>
                                 <Button type="submit">Submit</Button>
                             </FormGroup>
                         </Form>
@@ -57,3 +65,5 @@ class Register extends React.Component {
 }
 
 export default Register;
+
+<input type='hidden' name='var' value='<?php echo "$var";?>'/>

@@ -111,7 +111,7 @@ class Barchart extends Component {
         this.refs.bar.createBars();
       })
       .catch((err) => {
-        console.log(err.message);
+        // console.log(err.message);
       });
 
 
