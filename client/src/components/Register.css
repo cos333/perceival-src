@@ -1,0 +1,17 @@
+#register-button {
+    margin-bottom: 20px;
+}
+
+.registration-wrapper {
+    height: 350px;
+}
+
+
+.registration-form {
+    padding: 20px 30px;
+}
+
+.close-button {
+    padding-top: 0px;
+    padding-right: 15px;
+}
