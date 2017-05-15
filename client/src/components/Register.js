@@ -13,12 +13,6 @@ class Register extends Component {
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
     }
-
-    componentDidMount() {
-        console.log(this.state.profile);
-
-    }
-
     close() {
         this.setState({ showModal: false });
     }
