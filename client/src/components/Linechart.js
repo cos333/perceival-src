@@ -127,7 +127,6 @@ class Linechart extends Component {
           this.refs.linechart.createLines();
         })
         .catch((err) => {
-          console.log(err.message);
         });
   }
 
