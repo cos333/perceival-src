@@ -8,7 +8,8 @@ import {
 class Register extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { showModal: false }
+        this.state = { showModal: false,
+            profile: props.auth.getProfile() }
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
     }
@@ -23,34 +24,33 @@ class Register extends React.Component {
 
     render() {
         return (<div>
-            <Button onClick={this.open}
-                id='register-button'>Register App</Button>
+            <Button onClick={this.open} id='register-button'>Register App
+            </Button>
             <Modal show={this.state.showModal} onHide={this.close}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form method="POST" action="http://formspree.io/sheon.han@gmail.com">
-                        <FormGroup controlId="formHorizontalEmail">
-                            <Col sm={10}>
-                                <FormControl type="email" placeholder="Your email" />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup controlId="formHorizontalPassword">
-                            <Col sm={10}>
-                                <FormControl type="message" placeholder="Your message" />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup>
-                            <Col smOffset={2} sm={10}>
+                <div className="registration-wrapper">
+                    <div className="pull-right close-button"> 
+                        <Button bsStyle="danger" onClick={this.close}>X</Button>
+                    </div>
+
+                    <div className="registration-form">
+                        <h2 className="text-semibold">Register Application</h2>
+                        <br/>
+
+                        <p>Hello {this.state.profile.given_name}! Please fill out the following information to register your application.</p>
+
+                        <Form method="POST" action="http://formspree.io/jisung.cos333@gmail.com">
+                            <FormGroup>
+                                <FormControl type="text" bsSize="small" name="app-name" placeholder="Name of your app" />
+                            </FormGroup>
+                            <FormGroup>
+                                <FormControl type="text" bsSize="small" name="app-description" placeholder="Please describe your app in < 30 words." />
+                            </FormGroup>
+                            <FormGroup>
                                 <Button type="submit">Submit</Button>
-                            </Col>
-                        </FormGroup>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.close}>Close</Button>
-                </Modal.Footer>
+                            </FormGroup>
+                        </Form>
+                    </div>
+                </div>
             </Modal>
         </div>);
     }
