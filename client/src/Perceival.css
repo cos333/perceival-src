@@ -6,3 +6,8 @@
 .card {
     height: 500px;
 }
+
+.horizontal-ruler {
+    margin: 0px;
+    padding: 10px;
+}

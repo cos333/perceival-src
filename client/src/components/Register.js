@@ -24,8 +24,8 @@ class Register extends React.Component {
 
     render() {
         return (<div>
-            <Button onClick={this.open}
-                id='register-button'>Register App</Button>
+            <Button onClick={this.open} id='register-button'>Register App
+            </Button>
             <Modal show={this.state.showModal} onHide={this.close}>
                 <div className="registration-wrapper">
                     <div className="pull-right close-button"> 
