@@ -1,0 +1,15 @@
+README
+
+Welcome to Perceival Android Analytics! We hope that you'll find it easy to use and incredibly powerful for your analytics needs. Here's a quick guide to help you get started.
+
+1. Import the PerceivalAnalyticsAndroid code into your android project. This is an all encompassing piece of code; you should not have to import any additional classes or worry about other dependencies.
+
+2. In your onCreate, call setAppID with the unique parameter sent to you when you registered with us on Perceival.tech. This sets up our code to properly record your application as well as its users. Additionally, as soon as your app is opened you should call startRecording to begin logging all of your events. 
+
+3. Throughout your application, call buttonClick and addMoney as you like; we'll keep track of your totals for you per session.
+
+4. Throughout, if you'd like to log information about a specific user, you can call setUserProperty. You can log any information you'd like (we recommend using the google+ api to obtain certain user data about your google users that we are unable to obtain.)
+
+5. in onExit, when people quit their sessions, call stopRecording. This bundles up all of the data for a particular session for a particular user and sends it to our databases and ultimately displays for you on our site.
+
+That's it! 
