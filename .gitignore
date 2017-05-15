@@ -1,0 +1,8 @@
+.DS_Store
+*zip
+build/
+node_modules/
+*secret*
+*bfg*
+test-get*
+*.pyc
