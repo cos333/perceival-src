@@ -15,7 +15,7 @@ class Perceival extends Component {
             <div>
                 <div id='row0' className='row'>
                     <div className='col-md-12'>
-                            <Register />
+                            <Register auth={this.props.auth}/>
                     </div>
                 </div>
                 <div id='row1' className='row'>
