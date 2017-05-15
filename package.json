@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "node server",
-    "dev": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 npm start\"",
+    "dev": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 node index.js\"",
     "heroku-postbuild": "cd client/ && npm install && npm run build"
   },
   "cacheDirectories": [
