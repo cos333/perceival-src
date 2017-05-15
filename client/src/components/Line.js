@@ -19,22 +19,6 @@ import React, {Component} from 'react';
     return latterText
   }
 
-  export function prettifyXAxis(x) {
-    let latterText;
-    if (x === 'age') {
-      latterText = 'Age'
-    } else if (x === 'country') {
-      latterText = 'Country'
-    } else if (x === 'gender') {
-      latterText = 'Gender'
-    } else if (x === 'language') {
-      latterText = 'Language'
-    } else {
-      latterText = 'unknown response: (' + x + ')';
-    }
-    return latterText
-  }
-
 class Line extends Component {
   constructor() {
     super();
@@ -129,12 +113,11 @@ class Line extends Component {
         .text(yAxisLabel);
 
     // add x axis label
-    var xAxisLabel = prettifyXAxis(this.props.segment);
     svg.append("text")
         .attr('class', 'axis axis--x')
         .attr("transform", "translate(" + (w / 2) + " ," + (h - margin.bottom/3) + ")")
         .style("text-anchor", "middle")
-        .text(xAxisLabel);
+        .text("Time");
 
     var line = d3.line()
                    .curve(d3.curveBasis)
@@ -155,10 +138,38 @@ class Line extends Component {
                         function(d) {
                           return line(d.values);
                         })
+                    .attr("data-legend",function(d) { return d.label})
                     .style('stroke', function(d) {
                       return z(d.label);
                     });
     var totalLength = linesChart.node().getTotalLength();
+
+    // labels
+    svg.append("text")
+        .attr('class', 'axis axis--x')
+        .attr("transform", "translate(" + (w - 35) + "," + (h/2) + ")")
+        .style("text-anchor", "middle")
+        .text("color code");
+
+    svg.append("text")
+      .attr("transform", "translate(" + (w - 35) + "," + (h/2 + 20) + ")")
+      .style('font-size', '0.75em')
+      .style('fill', 'rgb(255, 127, 14)')
+      .text(dataset[0].label);
+
+    svg.append("text")
+      .attr("transform", "translate(" + (w - 35) + "," + (h/2 + 40) + ")")
+      .style('font-size', '0.75em')
+      .style('fill', 'rgb(44, 160, 44)')
+      .text(dataset[1].label);
+
+    if (dataset.length === 3) {
+    svg.append("text")
+      .attr("transform", "translate(" + (w - 35) + "," + (h/2 + 60) + ")")
+      .style('font-size', '0.75em')
+      .style('fill', 'rgb(214, 39, 40)')
+      .text(dataset[2].label);
+    }
 
     svg.append("text") // seems to counteract bug 
       .attr("transform", "translate(" + w + "," + dataset.y[length-1] + ")") 
