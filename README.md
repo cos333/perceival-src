@@ -2,7 +2,7 @@
 
 ### Perceival for Android: Superpowering app developers with data
 
-[**Perceival**](http://perceival.tech/demo) is an end-to-end data collection and visualization platform for Android app developers. Developers can embed minimalist API calls to our Perceival Android SDK in their Android apps to log data about user behavior. This data is automatically uploaded, stored, processed, and made available on a beautiful, reactive dashboard. We built Perceival as a final project for the course COS333 "Advanced Programming Techniques" at Princeton University.
+[**Perceival**](http://perceival.tech/demo) is an end-to-end data collection and visualization platform for Android app developers. Developers can embed minimalist API calls to our Perceival Android SDK in their applications to log data about user behavior. This data is automatically uploaded, stored, processed, and made available on a beautiful, reactive dashboard. We built Perceival as a final project for the course COS333 "Advanced Programming Techniques" at Princeton University.
 
 ### Where is the code?
 
@@ -18,5 +18,5 @@ As Perceival comprises several moving components across different platforms, we 
 
 We are a group of Princeton students excited about technology, software and data-related developments. We are advised by [Brian Kernighan (Bell Labs, Google, Princeton)](https://en.wikipedia.org/wiki/Brian_Kernighan) and Ghassen Jerfel (Google Brain, Princeton). 
 
-Please contact [info@perceival.tech](info@perceival.tech) with any questions or inquiries. 
+Please contact [info@perceival.tech](mailto:info@perceival.tech) with any questions or inquiries. 
 
